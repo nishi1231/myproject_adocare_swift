@@ -1,0 +1,807 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1837368AA8305CBC38549F36 /* Pods_MedicusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405ECF9299CD616C0D5010B0 /* Pods_MedicusTests.framework */; };
+		7F155FB7238FF6B700CF73F3 /* CoughCoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F155FB6238FF6B700CF73F3 /* CoughCoiceViewController.swift */; };
+		7F35DC82239A8A6C00DD16FA /* PeriodInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35DC81239A8A6C00DD16FA /* PeriodInputController.swift */; };
+		7F35DC8423A2757F00DD16FA /* OtherChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35DC8323A2757F00DD16FA /* OtherChoiceViewController.swift */; };
+		7F65923123C0907E00BA4FFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F65923023C0907E00BA4FFB /* GoogleService-Info.plist */; };
+		7F65923523C75C8700BA4FFB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65923423C75C8700BA4FFB /* LandingViewController.swift */; };
+		7F65923723C75CE500BA4FFB /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65923623C75CE500BA4FFB /* SigninViewController.swift */; };
+		7F65923923C75D3C00BA4FFB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65923823C75D3C00BA4FFB /* SignupViewController.swift */; };
+		7FA7565A234B7A740017CE9C /* feverchoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA75659234B7A740017CE9C /* feverchoiceViewController.swift */; };
+		7FAA319D2334FA94007F6C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA319C2334FA94007F6C3F /* AppDelegate.swift */; };
+		7FAA319F2334FA94007F6C3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA319E2334FA94007F6C3F /* ViewController.swift */; };
+		7FAA31A22334FA94007F6C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FAA31A02334FA94007F6C3F /* Main.storyboard */; };
+		7FAA31A42334FA97007F6C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FAA31A32334FA97007F6C3F /* Assets.xcassets */; };
+		7FAA31B22334FA97007F6C3F /* MedicusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA31B12334FA97007F6C3F /* MedicusTests.swift */; };
+		7FAA31BD2334FA97007F6C3F /* MedicusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA31BC2334FA97007F6C3F /* MedicusUITests.swift */; };
+		7FBE50C923E30EEE0022E7C2 /* ClinicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBE50C823E30EEE0022E7C2 /* ClinicListViewController.swift */; };
+		7FBE50CB2414C3EF0022E7C2 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBE50CA2414C3EF0022E7C2 /* ListDetailViewController.swift */; };
+		7FDD8A5A2351CFF60003E668 /* TemperatureChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD8A592351CFF60003E668 /* TemperatureChoiceViewController.swift */; };
+		9F49B92F4D56F210C5AB0251 /* Pods_Medicus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A119D5351736FEDF0CB894 /* Pods_Medicus.framework */; };
+		F7E9900B2921044E821915BB /* Pods_Medicus_MedicusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA18EBBEFD35E218EBEFA93A /* Pods_Medicus_MedicusUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7FAA31AE2334FA97007F6C3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FAA31912334FA94007F6C3F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FAA31982334FA94007F6C3F;
+			remoteInfo = Medicus;
+		};
+		7FAA31B92334FA97007F6C3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FAA31912334FA94007F6C3F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FAA31982334FA94007F6C3F;
+			remoteInfo = Medicus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		164E30D3B11D5797D8248C28 /* Pods-Medicus-MedicusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicus-MedicusUITests.debug.xcconfig"; path = "Target Support Files/Pods-Medicus-MedicusUITests/Pods-Medicus-MedicusUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		22A88FC83F8140CB6C203C92 /* Pods-MedicusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicusTests.debug.xcconfig"; path = "Target Support Files/Pods-MedicusTests/Pods-MedicusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		36D478A9D0DB30DD81255582 /* Pods-MedicusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicusTests.release.xcconfig"; path = "Target Support Files/Pods-MedicusTests/Pods-MedicusTests.release.xcconfig"; sourceTree = "<group>"; };
+		405ECF9299CD616C0D5010B0 /* Pods_MedicusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BC3B531A41D7D457DE557B5 /* Pods-Medicus-MedicusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicus-MedicusUITests.release.xcconfig"; path = "Target Support Files/Pods-Medicus-MedicusUITests/Pods-Medicus-MedicusUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7F155FB6238FF6B700CF73F3 /* CoughCoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoughCoiceViewController.swift; sourceTree = "<group>"; };
+		7F35DC81239A8A6C00DD16FA /* PeriodInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodInputController.swift; sourceTree = "<group>"; };
+		7F35DC8323A2757F00DD16FA /* OtherChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChoiceViewController.swift; sourceTree = "<group>"; };
+		7F65923023C0907E00BA4FFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7F65923423C75C8700BA4FFB /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		7F65923623C75CE500BA4FFB /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		7F65923823C75D3C00BA4FFB /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		7FA75659234B7A740017CE9C /* feverchoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feverchoiceViewController.swift; sourceTree = "<group>"; };
+		7FAA31992334FA94007F6C3F /* Medicus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medicus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FAA319C2334FA94007F6C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7FAA319E2334FA94007F6C3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7FAA31A12334FA94007F6C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7FAA31A32334FA97007F6C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7FAA31A82334FA97007F6C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FAA31AD2334FA97007F6C3F /* MedicusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedicusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FAA31B12334FA97007F6C3F /* MedicusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicusTests.swift; sourceTree = "<group>"; };
+		7FAA31B32334FA97007F6C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FAA31B82334FA97007F6C3F /* MedicusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedicusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FAA31BC2334FA97007F6C3F /* MedicusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicusUITests.swift; sourceTree = "<group>"; };
+		7FAA31BE2334FA97007F6C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FBE50C823E30EEE0022E7C2 /* ClinicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicListViewController.swift; sourceTree = "<group>"; };
+		7FBE50CA2414C3EF0022E7C2 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		7FDD8A592351CFF60003E668 /* TemperatureChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureChoiceViewController.swift; sourceTree = "<group>"; };
+		8420955A89DFFB7B6832CA8A /* Pods-Medicus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicus.release.xcconfig"; path = "Target Support Files/Pods-Medicus/Pods-Medicus.release.xcconfig"; sourceTree = "<group>"; };
+		A8A119D5351736FEDF0CB894 /* Pods_Medicus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medicus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA18EBBEFD35E218EBEFA93A /* Pods_Medicus_MedicusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medicus_MedicusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDCC034A96174FA5E56A7916 /* Pods-Medicus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicus.debug.xcconfig"; path = "Target Support Files/Pods-Medicus/Pods-Medicus.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7FAA31962334FA94007F6C3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F49B92F4D56F210C5AB0251 /* Pods_Medicus.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FAA31AA2334FA97007F6C3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1837368AA8305CBC38549F36 /* Pods_MedicusTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FAA31B52334FA97007F6C3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7E9900B2921044E821915BB /* Pods_Medicus_MedicusUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		584A95AE5BC35708178C853D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8A119D5351736FEDF0CB894 /* Pods_Medicus.framework */,
+				DA18EBBEFD35E218EBEFA93A /* Pods_Medicus_MedicusUITests.framework */,
+				405ECF9299CD616C0D5010B0 /* Pods_MedicusTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		769C54BAAB419A1A87498949 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FDCC034A96174FA5E56A7916 /* Pods-Medicus.debug.xcconfig */,
+				8420955A89DFFB7B6832CA8A /* Pods-Medicus.release.xcconfig */,
+				164E30D3B11D5797D8248C28 /* Pods-Medicus-MedicusUITests.debug.xcconfig */,
+				6BC3B531A41D7D457DE557B5 /* Pods-Medicus-MedicusUITests.release.xcconfig */,
+				22A88FC83F8140CB6C203C92 /* Pods-MedicusTests.debug.xcconfig */,
+				36D478A9D0DB30DD81255582 /* Pods-MedicusTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7FAA31902334FA94007F6C3F = {
+			isa = PBXGroup;
+			children = (
+				7FAA319B2334FA94007F6C3F /* Medicus */,
+				7FAA31B02334FA97007F6C3F /* MedicusTests */,
+				7FAA31BB2334FA97007F6C3F /* MedicusUITests */,
+				7FAA319A2334FA94007F6C3F /* Products */,
+				769C54BAAB419A1A87498949 /* Pods */,
+				584A95AE5BC35708178C853D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7FAA319A2334FA94007F6C3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7FAA31992334FA94007F6C3F /* Medicus.app */,
+				7FAA31AD2334FA97007F6C3F /* MedicusTests.xctest */,
+				7FAA31B82334FA97007F6C3F /* MedicusUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7FAA319B2334FA94007F6C3F /* Medicus */ = {
+			isa = PBXGroup;
+			children = (
+				7FAA319C2334FA94007F6C3F /* AppDelegate.swift */,
+				7FAA319E2334FA94007F6C3F /* ViewController.swift */,
+				7FAA31A02334FA94007F6C3F /* Main.storyboard */,
+				7FBE50CA2414C3EF0022E7C2 /* ListDetailViewController.swift */,
+				7FBE50C823E30EEE0022E7C2 /* ClinicListViewController.swift */,
+				7F65923823C75D3C00BA4FFB /* SignupViewController.swift */,
+				7F65923623C75CE500BA4FFB /* SigninViewController.swift */,
+				7F65923423C75C8700BA4FFB /* LandingViewController.swift */,
+				7F35DC8323A2757F00DD16FA /* OtherChoiceViewController.swift */,
+				7F35DC81239A8A6C00DD16FA /* PeriodInputController.swift */,
+				7F155FB6238FF6B700CF73F3 /* CoughCoiceViewController.swift */,
+				7FDD8A592351CFF60003E668 /* TemperatureChoiceViewController.swift */,
+				7FA75659234B7A740017CE9C /* feverchoiceViewController.swift */,
+				7FAA31A32334FA97007F6C3F /* Assets.xcassets */,
+				7FAA31A82334FA97007F6C3F /* Info.plist */,
+				7F65923023C0907E00BA4FFB /* GoogleService-Info.plist */,
+			);
+			path = Medicus;
+			sourceTree = "<group>";
+		};
+		7FAA31B02334FA97007F6C3F /* MedicusTests */ = {
+			isa = PBXGroup;
+			children = (
+				7FAA31B12334FA97007F6C3F /* MedicusTests.swift */,
+				7FAA31B32334FA97007F6C3F /* Info.plist */,
+			);
+			path = MedicusTests;
+			sourceTree = "<group>";
+		};
+		7FAA31BB2334FA97007F6C3F /* MedicusUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7FAA31BC2334FA97007F6C3F /* MedicusUITests.swift */,
+				7FAA31BE2334FA97007F6C3F /* Info.plist */,
+			);
+			path = MedicusUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7FAA31982334FA94007F6C3F /* Medicus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FAA31C12334FA97007F6C3F /* Build configuration list for PBXNativeTarget "Medicus" */;
+			buildPhases = (
+				6A17C0E887F5751DC2EF825F /* [CP] Check Pods Manifest.lock */,
+				7FAA31952334FA94007F6C3F /* Sources */,
+				7FAA31962334FA94007F6C3F /* Frameworks */,
+				7FAA31972334FA94007F6C3F /* Resources */,
+				29E5B8D06B8BA0A28373224D /* [CP] Embed Pods Frameworks */,
+				0D9EB2A62184ED81BCCA7A47 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Medicus;
+			productName = Medicus;
+			productReference = 7FAA31992334FA94007F6C3F /* Medicus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7FAA31AC2334FA97007F6C3F /* MedicusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FAA31C42334FA97007F6C3F /* Build configuration list for PBXNativeTarget "MedicusTests" */;
+			buildPhases = (
+				510786FFFB3A033DF7980526 /* [CP] Check Pods Manifest.lock */,
+				7FAA31A92334FA97007F6C3F /* Sources */,
+				7FAA31AA2334FA97007F6C3F /* Frameworks */,
+				7FAA31AB2334FA97007F6C3F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FAA31AF2334FA97007F6C3F /* PBXTargetDependency */,
+			);
+			name = MedicusTests;
+			productName = MedicusTests;
+			productReference = 7FAA31AD2334FA97007F6C3F /* MedicusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7FAA31B72334FA97007F6C3F /* MedicusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FAA31C72334FA97007F6C3F /* Build configuration list for PBXNativeTarget "MedicusUITests" */;
+			buildPhases = (
+				2ADC50ABE06A79DD7B3BA589 /* [CP] Check Pods Manifest.lock */,
+				7FAA31B42334FA97007F6C3F /* Sources */,
+				7FAA31B52334FA97007F6C3F /* Frameworks */,
+				7FAA31B62334FA97007F6C3F /* Resources */,
+				E91D1835EC47470E7A58059B /* [CP] Embed Pods Frameworks */,
+				B71AB2E48121BCD49809241D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FAA31BA2334FA97007F6C3F /* PBXTargetDependency */,
+			);
+			name = MedicusUITests;
+			productName = MedicusUITests;
+			productReference = 7FAA31B82334FA97007F6C3F /* MedicusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7FAA31912334FA94007F6C3F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "西山翔太";
+				TargetAttributes = {
+					7FAA31982334FA94007F6C3F = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					7FAA31AC2334FA97007F6C3F = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 7FAA31982334FA94007F6C3F;
+					};
+					7FAA31B72334FA97007F6C3F = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 7FAA31982334FA94007F6C3F;
+					};
+				};
+			};
+			buildConfigurationList = 7FAA31942334FA94007F6C3F /* Build configuration list for PBXProject "Medicus" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7FAA31902334FA94007F6C3F;
+			productRefGroup = 7FAA319A2334FA94007F6C3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7FAA31982334FA94007F6C3F /* Medicus */,
+				7FAA31AC2334FA97007F6C3F /* MedicusTests */,
+				7FAA31B72334FA97007F6C3F /* MedicusUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7FAA31972334FA94007F6C3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FAA31A42334FA97007F6C3F /* Assets.xcassets in Resources */,
+				7FAA31A22334FA94007F6C3F /* Main.storyboard in Resources */,
+				7F65923123C0907E00BA4FFB /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FAA31AB2334FA97007F6C3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FAA31B62334FA97007F6C3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D9EB2A62184ED81BCCA7A47 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicus/Pods-Medicus-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicus/Pods-Medicus-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Medicus/Pods-Medicus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29E5B8D06B8BA0A28373224D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicus/Pods-Medicus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicus/Pods-Medicus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Medicus/Pods-Medicus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2ADC50ABE06A79DD7B3BA589 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Medicus-MedicusUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		510786FFFB3A033DF7980526 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MedicusTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A17C0E887F5751DC2EF825F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Medicus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B71AB2E48121BCD49809241D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicus-MedicusUITests/Pods-Medicus-MedicusUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicus-MedicusUITests/Pods-Medicus-MedicusUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Medicus-MedicusUITests/Pods-Medicus-MedicusUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E91D1835EC47470E7A58059B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicus-MedicusUITests/Pods-Medicus-MedicusUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Medicus-MedicusUITests/Pods-Medicus-MedicusUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Medicus-MedicusUITests/Pods-Medicus-MedicusUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7FAA31952334FA94007F6C3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FDD8A5A2351CFF60003E668 /* TemperatureChoiceViewController.swift in Sources */,
+				7FAA319F2334FA94007F6C3F /* ViewController.swift in Sources */,
+				7F65923923C75D3C00BA4FFB /* SignupViewController.swift in Sources */,
+				7FBE50CB2414C3EF0022E7C2 /* ListDetailViewController.swift in Sources */,
+				7F65923523C75C8700BA4FFB /* LandingViewController.swift in Sources */,
+				7F35DC8423A2757F00DD16FA /* OtherChoiceViewController.swift in Sources */,
+				7FBE50C923E30EEE0022E7C2 /* ClinicListViewController.swift in Sources */,
+				7FAA319D2334FA94007F6C3F /* AppDelegate.swift in Sources */,
+				7F155FB7238FF6B700CF73F3 /* CoughCoiceViewController.swift in Sources */,
+				7FA7565A234B7A740017CE9C /* feverchoiceViewController.swift in Sources */,
+				7F35DC82239A8A6C00DD16FA /* PeriodInputController.swift in Sources */,
+				7F65923723C75CE500BA4FFB /* SigninViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FAA31A92334FA97007F6C3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FAA31B22334FA97007F6C3F /* MedicusTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FAA31B42334FA97007F6C3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FAA31BD2334FA97007F6C3F /* MedicusUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7FAA31AF2334FA97007F6C3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FAA31982334FA94007F6C3F /* Medicus */;
+			targetProxy = 7FAA31AE2334FA97007F6C3F /* PBXContainerItemProxy */;
+		};
+		7FAA31BA2334FA97007F6C3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FAA31982334FA94007F6C3F /* Medicus */;
+			targetProxy = 7FAA31B92334FA97007F6C3F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7FAA31A02334FA94007F6C3F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FAA31A12334FA94007F6C3F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7FAA31BF2334FA97007F6C3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7FAA31C02334FA97007F6C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7FAA31C22334FA97007F6C3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDCC034A96174FA5E56A7916 /* Pods-Medicus.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Medicus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Medicus.Medicus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7FAA31C32334FA97007F6C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8420955A89DFFB7B6832CA8A /* Pods-Medicus.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Medicus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Medicus.Medicus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7FAA31C52334FA97007F6C3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22A88FC83F8140CB6C203C92 /* Pods-MedicusTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MedicusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Medicus.MedicusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Medicus.app/Medicus";
+			};
+			name = Debug;
+		};
+		7FAA31C62334FA97007F6C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36D478A9D0DB30DD81255582 /* Pods-MedicusTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MedicusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Medicus.MedicusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Medicus.app/Medicus";
+			};
+			name = Release;
+		};
+		7FAA31C82334FA97007F6C3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 164E30D3B11D5797D8248C28 /* Pods-Medicus-MedicusUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MedicusUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Medicus.MedicusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Medicus;
+			};
+			name = Debug;
+		};
+		7FAA31C92334FA97007F6C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BC3B531A41D7D457DE557B5 /* Pods-Medicus-MedicusUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MedicusUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Medicus.MedicusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Medicus;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7FAA31942334FA94007F6C3F /* Build configuration list for PBXProject "Medicus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FAA31BF2334FA97007F6C3F /* Debug */,
+				7FAA31C02334FA97007F6C3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FAA31C12334FA97007F6C3F /* Build configuration list for PBXNativeTarget "Medicus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FAA31C22334FA97007F6C3F /* Debug */,
+				7FAA31C32334FA97007F6C3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FAA31C42334FA97007F6C3F /* Build configuration list for PBXNativeTarget "MedicusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FAA31C52334FA97007F6C3F /* Debug */,
+				7FAA31C62334FA97007F6C3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FAA31C72334FA97007F6C3F /* Build configuration list for PBXNativeTarget "MedicusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FAA31C82334FA97007F6C3F /* Debug */,
+				7FAA31C92334FA97007F6C3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7FAA31912334FA94007F6C3F /* Project object */;
+}

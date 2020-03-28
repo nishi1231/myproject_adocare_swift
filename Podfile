@@ -1,0 +1,31 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Medicus' do
+  use_frameworks!
+
+  # Pods for Medicus
+  pod 'YSCheckBox', :git => 'https://github.com/sekies/YSCheckBox.git'
+
+
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI'
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Google'
+  pod 'Hero'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'SwiftyJSON'
+  pod 'Alamofire'
+
+
+  target 'MedicusTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MedicusUITests' do
+    # Pods for testing
+  end
+
+end

@@ -1,0 +1,6 @@
+framework module YSCheckBox {
+  umbrella header "YSCheckBox-umbrella.h"
+
+  export *
+  module * { export * }
+}
