@@ -17,6 +17,7 @@ target 'Medicus' do
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'MaterialComponents'
 
 
   target 'MedicusTests' do

@@ -94,13 +94,20 @@ class ClinicListViewController: UIViewController, UITableViewDelegate, UITableVi
         //選択したいdoctorを取得
         if let selecteddoctor = self.doctors?[indexPath.row]{
         
+        
         //ListDetailViewへ遷移する
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "ListDetail")as!ListDetailViewController
         self.hidesBottomBarWhenPushed = true
         
         //ListDetailViewへ値を渡す
-        nextView.doctornametext? = selecteddoctor.full_name
+          
+        //Stringで渡して、次の画面でUIimageに変換必要？調査する。
+        nextView.doctorimage = selecteddoctor.profile_image
+            
+        nextView.doctornametext = selecteddoctor.full_name
+        nextView.hospitalnametext = selecteddoctor.hospital_name
+        nextView.introductiontext = selecteddoctor.introduction_text
         
         //pushで遷移する
         navigationController?.pushViewController(nextView, animated: true)

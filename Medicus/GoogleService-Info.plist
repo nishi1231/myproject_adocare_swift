@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>351720007063-om8ndf8gta4e20qg21il36spjq958tdu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.351720007063-om8ndf8gta4e20qg21il36spjq958tdu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCt-TNO0tp-OcJxN7dKhTO5rsc-mAuvF4w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>351720007063</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Medicus.Medicus</string>
+	<key>PROJECT_ID</key>
+	<string>adocare-fb017</string>
+	<key>STORAGE_BUCKET</key>
+	<string>adocare-fb017.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:351720007063:ios:4eb9aa7cef56b2411e90d2</string>
+	<key>DATABASE_URL</key>
+	<string>https://adocare-fb017.firebaseio.com</string>
+</dict>
+</plist>

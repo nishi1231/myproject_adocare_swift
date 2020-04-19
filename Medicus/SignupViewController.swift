@@ -41,10 +41,9 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
                 EmailtextField.lineColor = lightGreyColor
                 EmailtextField.selectedTitleColor = overcastBlueColor
                 EmailtextField.selectedLineColor = overcastBlueColor
-
                 EmailtextField.lineHeight = 1.0 // bottom line height in points
                 EmailtextField.selectedLineHeight = 2.0
-        
+                EmailtextField.autocorrectionType = .no
                 EmailtextField.keyboardType = UIKeyboardType.emailAddress
         
         
@@ -58,16 +57,14 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
                 PasswordtextField.lineColor = lightGreyColor
                 PasswordtextField.selectedTitleColor = overcastBlueColor
                 PasswordtextField.selectedLineColor = overcastBlueColor
-
                 PasswordtextField.lineHeight = 1.0 // bottom line height in points
                 PasswordtextField.selectedLineHeight = 2.0
-        
+                PasswordtextField.autocorrectionType = .no
                 PasswordtextField.keyboardType = UIKeyboardType.webSearch
 
         
                 self.view.addSubview(EmailtextField)
                 self.view.addSubview(PasswordtextField)
-        
         
         // Buttonを生成する.
                 signupButton = UIButton()
