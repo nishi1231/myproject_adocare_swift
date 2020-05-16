@@ -11,7 +11,6 @@
 		7F155FB7238FF6B700CF73F3 /* CoughCoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F155FB6238FF6B700CF73F3 /* CoughCoiceViewController.swift */; };
 		7F35DC82239A8A6C00DD16FA /* PeriodInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35DC81239A8A6C00DD16FA /* PeriodInputController.swift */; };
 		7F35DC8423A2757F00DD16FA /* OtherChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35DC8323A2757F00DD16FA /* OtherChoiceViewController.swift */; };
-		7F65923123C0907E00BA4FFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F65923023C0907E00BA4FFB /* GoogleService-Info.plist */; };
 		7F65923523C75C8700BA4FFB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65923423C75C8700BA4FFB /* LandingViewController.swift */; };
 		7F65923723C75CE500BA4FFB /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65923623C75CE500BA4FFB /* SigninViewController.swift */; };
 		7F65923923C75D3C00BA4FFB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65923823C75D3C00BA4FFB /* SignupViewController.swift */; };
@@ -24,6 +23,7 @@
 		7FAA31BD2334FA97007F6C3F /* MedicusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA31BC2334FA97007F6C3F /* MedicusUITests.swift */; };
 		7FBE50C923E30EEE0022E7C2 /* ClinicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBE50C823E30EEE0022E7C2 /* ClinicListViewController.swift */; };
 		7FBE50CB2414C3EF0022E7C2 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBE50CA2414C3EF0022E7C2 /* ListDetailViewController.swift */; };
+		7FBE50CD243834FC0022E7C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FBE50CC243834FB0022E7C2 /* GoogleService-Info.plist */; };
 		7FDD8A5A2351CFF60003E668 /* TemperatureChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD8A592351CFF60003E668 /* TemperatureChoiceViewController.swift */; };
 		9F49B92F4D56F210C5AB0251 /* Pods_Medicus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A119D5351736FEDF0CB894 /* Pods_Medicus.framework */; };
 		F7E9900B2921044E821915BB /* Pods_Medicus_MedicusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA18EBBEFD35E218EBEFA93A /* Pods_Medicus_MedicusUITests.framework */; };
@@ -55,7 +55,6 @@
 		7F155FB6238FF6B700CF73F3 /* CoughCoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoughCoiceViewController.swift; sourceTree = "<group>"; };
 		7F35DC81239A8A6C00DD16FA /* PeriodInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodInputController.swift; sourceTree = "<group>"; };
 		7F35DC8323A2757F00DD16FA /* OtherChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChoiceViewController.swift; sourceTree = "<group>"; };
-		7F65923023C0907E00BA4FFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F65923423C75C8700BA4FFB /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		7F65923623C75CE500BA4FFB /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		7F65923823C75D3C00BA4FFB /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		7FAA31BE2334FA97007F6C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FBE50C823E30EEE0022E7C2 /* ClinicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicListViewController.swift; sourceTree = "<group>"; };
 		7FBE50CA2414C3EF0022E7C2 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		7FBE50CC243834FB0022E7C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FDD8A592351CFF60003E668 /* TemperatureChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureChoiceViewController.swift; sourceTree = "<group>"; };
 		8420955A89DFFB7B6832CA8A /* Pods-Medicus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicus.release.xcconfig"; path = "Target Support Files/Pods-Medicus/Pods-Medicus.release.xcconfig"; sourceTree = "<group>"; };
 		A8A119D5351736FEDF0CB894 /* Pods_Medicus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medicus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,7 +172,7 @@
 				7FA75659234B7A740017CE9C /* feverchoiceViewController.swift */,
 				7FAA31A32334FA97007F6C3F /* Assets.xcassets */,
 				7FAA31A82334FA97007F6C3F /* Info.plist */,
-				7F65923023C0907E00BA4FFB /* GoogleService-Info.plist */,
+				7FBE50CC243834FB0022E7C2 /* GoogleService-Info.plist */,
 			);
 			path = Medicus;
 			sourceTree = "<group>";
@@ -307,8 +307,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FAA31A42334FA97007F6C3F /* Assets.xcassets in Resources */,
+				7FBE50CD243834FC0022E7C2 /* GoogleService-Info.plist in Resources */,
 				7FAA31A22334FA94007F6C3F /* Main.storyboard in Resources */,
-				7F65923123C0907E00BA4FFB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
