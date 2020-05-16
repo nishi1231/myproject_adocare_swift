@@ -9,128 +9,136 @@
 import UIKit
 import SkyFloatingLabelTextField
 import Firebase
+import FirebaseAuth
+import SnapKit
+
 
 class SignupViewController: UIViewController,UITextFieldDelegate {
     
     
-    private var EmailtextField: UITextField!
-    var currentLength = 0
+    @IBOutlet weak var mailtextfield: SkyFloatingLabelTextField!
     
-    private var PasswordtextField: UITextField!
-    //var currentLength = 0
+    @IBOutlet weak var passwordtextfield: SkyFloatingLabelTextField!
     
+    @IBOutlet weak var emailerrormessage: UILabel!
     
-    private var signupButton: UIButton!
+    @IBOutlet weak var passworderrormessage: UILabel!
 
+    private var signupButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-             // 入力欄を生成する。
-                let lightGreyColor = UIColor(red: 197/255, green: 205/255, blue: 205/255, alpha: 1.0)
-                let darkGreyColor = UIColor(red: 52/255, green: 42/255, blue: 61/255, alpha: 1.0)
-                let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
-
-                // メアド入力欄
-                let EmailtextField = SkyFloatingLabelTextField(frame: CGRect(x: 50, y: 210, width: 300, height: 45))
-                EmailtextField.placeholder = "メールアドレス"
-                EmailtextField.title = "メールアドレス"
-
-                EmailtextField.tintColor = overcastBlueColor // the color of the blinking cursor
-                EmailtextField.textColor = darkGreyColor
-                EmailtextField.lineColor = lightGreyColor
-                EmailtextField.selectedTitleColor = overcastBlueColor
-                EmailtextField.selectedLineColor = overcastBlueColor
-                EmailtextField.lineHeight = 1.0 // bottom line height in points
-                EmailtextField.selectedLineHeight = 2.0
-                EmailtextField.autocorrectionType = .no
-                EmailtextField.keyboardType = UIKeyboardType.emailAddress
         
+                mailtextfield.keyboardType = UIKeyboardType.emailAddress
+                passwordtextfield.keyboardType = UIKeyboardType.emailAddress
+                passwordtextfield.isSecureTextEntry = true
         
-                // パスワード入力欄
-                let PasswordtextField = SkyFloatingLabelTextField(frame: CGRect(x: 50, y: 280, width: 300, height: 45))
-                PasswordtextField.placeholder = "パスワード"
-                PasswordtextField.title = "パスワード"
+                self.view.addSubview(mailtextfield)
+                self.view.addSubview(passwordtextfield)
+        
+                mailtextfield.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
+                passwordtextfield.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
+                passwordtextfield.addTarget(self, action: #selector(passwordErrorMessege), for: UIControl.Event.editingChanged)
+        
+                emailerrormessage.isHidden = true
+                passworderrormessage.isHidden = true
 
-                PasswordtextField.tintColor = overcastBlueColor // the color of the blinking cursor
-                PasswordtextField.textColor = darkGreyColor
-                PasswordtextField.lineColor = lightGreyColor
-                PasswordtextField.selectedTitleColor = overcastBlueColor
-                PasswordtextField.selectedLineColor = overcastBlueColor
-                PasswordtextField.lineHeight = 1.0 // bottom line height in points
-                PasswordtextField.selectedLineHeight = 2.0
-                PasswordtextField.autocorrectionType = .no
-                PasswordtextField.keyboardType = UIKeyboardType.webSearch
-
-        
-                self.view.addSubview(EmailtextField)
-                self.view.addSubview(PasswordtextField)
-        
-        // Buttonを生成する.
+             // Buttonを生成する.
                 signupButton = UIButton()
-
-                // ボタンのサイズ.
-                let bsigninWidth: CGFloat = 300
-                let bsigninHeight: CGFloat = 50
-        
-                // ボタンのX,Y座標.
-                let possigninX: CGFloat = self.view.frame.width/2 - bsigninWidth/2
-                let possigninY: CGFloat = self.view.frame.height/2 - bsigninHeight/2
-                        
-                // ボタンの設置座標とサイズを設定する.
-                signupButton.frame = CGRect(x: possigninX, y: possigninY, width: bsigninWidth, height: bsigninHeight)
-        
-                // ボタンの背景色を設定.
-                signupButton.backgroundColor = overcastBlueColor
-
-                // ボタンの枠を丸くする.
+                signupButton.backgroundColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
                 signupButton.layer.masksToBounds = true
-
-                // コーナーの半径を設定する.
                 signupButton.layer.cornerRadius = 20.0
-
-                // タイトルを設定する(通常時).
                 signupButton.setTitle("登録する", for: .normal)
                 signupButton.setTitleColor(UIColor.white, for: .normal)
-                
-                // ボタンにタグをつける.
                 signupButton.tag = 1
 
-                // ボタンをViewに追加.
                 self.view.addSubview(signupButton)
-            
-               // ボタンをタップで次画面に遷移.
-               signupButton.addTarget(self, action: #selector(didTapsignupButtonButton), for: .touchUpInside)
-               self.view.addSubview(signupButton)
-               
-    }
-    
-    @objc func didTapsignupButtonButton(email: String, password: String)  {
-        guard let email = EmailtextField.text, let password = PasswordtextField.text else {
-            return
-        }
         
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if (user != nil && error == nil) {
-                print("register successed")
-                self.EmailtextField.text = "";
-                self.PasswordtextField.text = ""
+                signupButton.isEnabled = false
+                signupButton.alpha = 0.5
+        
+                signupButton.snp.makeConstraints{ make in
+                    make.width.equalTo(250)
+                    make.height.equalTo(50)
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                }
+        
+            
+        signupButton.addTarget(self, action: #selector(SignupViewController.didTapsignupButton(_:)), for: .touchUpInside)
+               
+     }
+    
+    // バリデーションチェック後にボタンアクティブ
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+              guard let mailtext = mailtextfield.text,
+                    let passwordtext = passwordtextfield.text else { return }
+                      
+                     if validateEmail(candidate: mailtext) && passwordtext.count >= 8 {
+                        signupButton.isEnabled = true
+                        signupButton.alpha = 1.0
+                        self.emailerrormessage.isHidden = true
+                        print("成功")
+                  } else {
+                        signupButton.isEnabled = false
+                        signupButton.alpha = 0.5
+                        print("失敗")
+               }
+           }
+    
+          func validateEmail(candidate: String) -> Bool {
+               let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+               return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
+           }
+    
+    // パスワードエラーメッセージ
+    @objc func passwordErrorMessege(_ textField: UITextField) {
+    
+          guard let passwordtext = passwordtextfield.text else { return }
+            
+                 if passwordtext.count >= 1 && passwordtext.count <= 7 {
+                    passworderrormessage.isHidden = false
+                    passworderrormessage.text = "8文字以上で入力してください"
+              } else {
+                    passworderrormessage.isHidden = true
+              }
+           }
+    
+    //firebaseでのユーザー作成
+    @objc func didTapsignupButton(_ sender: UIButton) {
+        
+      if((mailtextfield.text?.isEmpty)!||(passwordtextfield.text?.isEmpty)!) { return
             } else {
-                print("register failed")
+        
+             Auth.auth().createUser(withEmail:mailtextfield.text!, password: passwordtextfield.text!) {(user, error) in
+                
+                 if ((error == nil)) {
+                    print("成功")
+                    
+                    let storyboard: UIStoryboard = self.storyboard!
+                    let nextView = storyboard.instantiateViewController(withIdentifier: "UITabbar")
+                    self.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(nextView, animated: true)
+                    self.hidesBottomBarWhenPushed = false
+                
+                  } else {
+                    //firebaseからのエラー処理
+                    print("登録失敗")
+                    if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                       switch errorCode {
+                        case .emailAlreadyInUse:self.emailerrormessage.text = "このメールアドレスは既に使われています"
+                              self.emailerrormessage.isHidden = false
+                        default:self.emailerrormessage.text = "通信に失敗しました。"
+                           }
+                        }
+                     }
+                }
             }
         }
+    }
 
-    
-    
-    
-    /*@objc func didTapsignupButtonButton() {
-         let storyboard: UIStoryboard = self.storyboard!
-         let nextView = storyboard.instantiateViewController(withIdentifier: "TemperatureChoice")
-         self.hidesBottomBarWhenPushed = true
-         navigationController?.pushViewController(nextView, animated: true)
-         self.hidesBottomBarWhenPushed = false
-    }*/
-    
-    
-  }
-}
+       
+  

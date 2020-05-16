@@ -44,7 +44,7 @@ class ClinicListViewController: UIViewController, UITableViewDelegate, UITableVi
          )
         
         //DoctorテーブルからAPIで取得
-        Alamofire.request("http://127.0.0.1:8000/api/v1/product/")
+        AF.request("http://127.0.0.1:8000/api/v1/product/")
             .responseJSON{res in
                 guard let json = res.data
                 else{

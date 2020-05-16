@@ -17,6 +17,17 @@ class CoughCoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // テキスト表示
+                let titleLabel = UILabel() // ラベルの生成
+                titleLabel.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.size.width, height: 44) // 位置とサイズの指定
+                titleLabel.textAlignment = NSTextAlignment.center // 横揃えの設定
+                titleLabel.text = "せきは出ますか？" // テキストの設定
+                titleLabel.textColor = UIColor.black // テキストカラーの設定
+                titleLabel.font = UIFont(name: "Arial", size: 22) // フォントの設定
+                self.view.addSubview(titleLabel) // ラベルの追加
+
+        
 
                // Buttonを生成する.
                 CoughCoiceYesButton = UIButton()

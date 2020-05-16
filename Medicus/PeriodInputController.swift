@@ -21,7 +21,23 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+            // テキスト表示
+                     let titleLabel = UILabel() // ラベルの生成
+                     titleLabel.frame = CGRect(x: 0, y: 250, width: UIScreen.main.bounds.size.width, height: 44) // 位置とサイズの指定
+                     titleLabel.textAlignment = NSTextAlignment.center // 横揃えの設定
+                     titleLabel.text = "いつから症状が出ていますか？" // テキストの設定
+                     titleLabel.textColor = UIColor.black // テキストカラーの設定
+                     titleLabel.font = UIFont(name: "Arial", size: 22) // フォントの設定
+                     self.view.addSubview(titleLabel) // ラベルの追加
         
+                     let periodLabel = UILabel() // ラベルの生成
+                     periodLabel.frame = CGRect(x: 120, y: 320, width: UIScreen.main.bounds.size.width, height: 44) // 位置とサイズの指定
+                     periodLabel.textAlignment = NSTextAlignment.center // 横揃えの設定
+                     periodLabel.text = "日前" // テキストの設定
+                     periodLabel.textColor = UIColor.black // テキストカラーの設定
+                     periodLabel.font = UIFont(name: "Arial", size: 17) // フォントの設定
+                     self.view.addSubview(periodLabel) // ラベルの追加
+
         // ここからテキストフィールドの処理
                      // UITextFieldの配置するx,yと幅と高さを設定.
                       let tWidth: CGFloat = 200
@@ -29,25 +45,15 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
                       let posTextX: CGFloat = (self.view.bounds.width - tWidth)/2
                       let posTextY: CGFloat = (self.view.bounds.height - tHeight)/2
 
-                      // UITextFieldを作成する.
+            
                       myTextField = UITextField(frame: CGRect(x: posTextX, y: posTextY, width: tWidth, height: tHeight))
-
-                     // 文字を中央に表示
                       myTextField.textAlignment = NSTextAlignment.center
-
-                      // Delegateを自身に設定する
                       myTextField.delegate = self
-
-                      // 枠を表示する.
                       myTextField.borderStyle = .none
-
                       /*クリアボタンを追加.
                       myTextField.clearButtonMode = .whileEditing*/
-               
-                      // 数字入力
                       myTextField.keyboardType = UIKeyboardType.phonePad
 
-                      // Viewに追加する
                       self.view.addSubview(myTextField)
                
                       let border = CALayer()
@@ -79,46 +85,26 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
                
                      // Buttonを生成する.
                        periodButton = UIButton()
-
-                       // ボタンのサイズ.
                        let bWidth: CGFloat = 200
                        let bHeight: CGFloat = 50
-
-                       // ボタンのX,Y座標.
                        let posbuttonX: CGFloat = self.view.frame.width/2 - bWidth/2
                        let posbuttonY: CGFloat = self.view.frame.height/1.6 - bHeight/2
-
-                       // ボタンの設置座標とサイズを設定する.
                        periodButton.frame = CGRect(x: posbuttonX, y: posbuttonY, width: bWidth, height: bHeight)
-
-                       // ボタンの背景色を設定.
                        periodButton.backgroundColor = UIColor.orange
-
-                       // ボタンの枠を丸くする.
                        periodButton.layer.masksToBounds = true
-
-                       // コーナーの半径を設定する.
                        periodButton.layer.cornerRadius = 20.0
-
-                       // タイトルを設定する(通常時).
                        periodButton.setTitle("次へ", for: .normal)
                        periodButton.setTitleColor(UIColor.white, for: .normal)
-
-                       // ボタンにタグをつける.
                        periodButton.tag = 1
 
-                       // ボタンをViewに追加.
                        self.view.addSubview(periodButton)
-                
-        
+
                        periodButton.isEnabled = false
                        periodButton.alpha = 0.5
                
-                      // ボタンをタップで次画面に遷移.
                        periodButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
                        self.view.addSubview(periodButton)
                 
-                      // 次の画面のBackボタンを「戻る」に変更
                        self.navigationItem.backBarButtonItem = UIBarButtonItem(
                           title:  "",
                           style:  .plain,
@@ -129,27 +115,27 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
     
                   // 小数点を入力チェック
         @objc func textField(_ myTextField: UITextField,shouldChangeCharactersIn range: NSRange, replacementString string: String)  ->Bool{
-                     guard let text = myTextField.text else {return true
-                    }
-                           let length = text.count
-
-                     if (length > currentLength) {
+                     guard let text = myTextField.text else {
+                        return true
+                       }
+                      let length = text.count
+                      if (length > currentLength) {
                      // テキストを追加したとき
-                     if (length == 3 ) {
-                     let content = NSMutableString(string: text)
-                     content.insert(".", at: length - 1)
-                     myTextField.text = content as String
-                    }
-                   }
-                     else{
-                // テキストを削除したとき
-                     if (length == 3 ) {
-                     myTextField.text = (text as NSString).substring(to: length - 1)
-                     }
-                    }
+                         if (length == 3 ) {
+                             let content = NSMutableString(string: text)
+                             content.insert(".", at: length - 1)
+                             myTextField.text = content as String
+                           }
+                         }
+                         else{
+                    // テキストを削除したとき
+                         if (length == 3 ) {
+                            myTextField.text = (text as NSString).substring(to: length - 1)
+                           }
+                          }
                      currentLength = length
                 
-                // テキスト入力後にボタン活性化
+                    // テキスト入力後にボタン活性化
                  let textempty = (myTextField.text! as NSString).replacingCharacters(in: range, with: string)
                      if textempty.count <= 0 {
                       periodButton.isEnabled = false
@@ -214,11 +200,11 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
            
            // ボタンタップで次画面へ遷移
     @objc func didTapButton() {
-                        let storyboard: UIStoryboard = self.storyboard!
-                        let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")
-                        self.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(nextView, animated: true)
-                        self.hidesBottomBarWhenPushed = false
-          }
+                  let storyboard: UIStoryboard = self.storyboard!
+                  let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")
+                  self.hidesBottomBarWhenPushed = true
+                  navigationController?.pushViewController(nextView, animated: true)
+                  self.hidesBottomBarWhenPushed = false
+            }
         
     }

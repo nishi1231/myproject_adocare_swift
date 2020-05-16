@@ -6,8 +6,6 @@ target 'Medicus' do
 
   # Pods for Medicus
   pod 'YSCheckBox', :git => 'https://github.com/sekies/YSCheckBox.git'
-
-
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'FirebaseUI'
@@ -18,6 +16,8 @@ target 'Medicus' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'MaterialComponents'
+  pod 'SnapKit', '~> 5.0.0'
+  
 
 
   target 'MedicusTests' do
