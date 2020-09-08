@@ -190,8 +190,8 @@ class OtherChoiceViewController: UIViewController{
                 self.navigationItem.backBarButtonItem = UIBarButtonItem(
                    title:  "",
                    style:  .plain,
-                  target: nil,
-                  action: nil
+                   target: nil,
+                   action: nil
                  )
 
     }

@@ -17,6 +17,8 @@ target 'Medicus' do
   pod 'Alamofire'
   pod 'MaterialComponents'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git'
+  pod 'NVActivityIndicatorView'
   
 
 
