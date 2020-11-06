@@ -12,6 +12,8 @@ import Alamofire
 import SwiftyJSON
 import SnapKit
 import NVActivityIndicatorView
+import KeychainAccess
+import KeychainSwift
 
 class SigninViewController: UIViewController,UITextFieldDelegate {
 
@@ -69,18 +71,15 @@ class SigninViewController: UIViewController,UITextFieldDelegate {
                     make.centerY.equalToSuperview()
                 }
         
-               let myBackButton = UIBarButtonItem(
-                   title: "",
-                   style: .plain,
-                   target: nil,
-                   action: nil
-                  )
-               self.navigationItem.backBarButtonItem = myBackButton
+                
+                self.navigationController?.navigationBar.barTintColor = .white
+                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+                self.navigationController?.navigationBar.shadowImage = UIImage()
             
                // ボタンをタップで次画面に遷移.
             signinButton.addTarget(self, action: #selector(didTapsigninButton), for: .touchUpInside)
             self.view.addSubview(signinButton)
-               
+
     }
     
     
@@ -105,7 +104,7 @@ class SigninViewController: UIViewController,UITextFieldDelegate {
                return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
            }
 
-    
+
     @objc func didTapsigninButton(_ sender: UIButton) {
         
         signinIndicator.startAnimating()
@@ -118,28 +117,35 @@ class SigninViewController: UIViewController,UITextFieldDelegate {
                        "email": signinmailtextfield.text!,
                        "password": signinpasswordtextfield.text!
                          ]
-                             
-                     AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default , headers: headers)
+                    //rest-authにpost
+                   AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default , headers: headers)
                          .validate(statusCode: 200..<300)
                          .responseJSON { response in
                              switch response.result {
                                    
                                case .success(let value):
                                      
+                                
                                      let json = JSON(value)
-                                     let token = json["token"].string
-                                     print(json)
-                
+                                     let token = json["key"].string
+                                     print(token)
                                      
+
+
+                                    
                                      self.signinIndicator.stopAnimating()
+                                     
                                      
                                      let storyboard: UIStoryboard = self.storyboard!
                                      let nextView = storyboard.instantiateViewController(withIdentifier: "UITabbar")
                                      self.hidesBottomBarWhenPushed = true
                                      self.navigationController?.pushViewController(nextView, animated: true)
                                      self.hidesBottomBarWhenPushed = false
+                                          nextView.navigationItem.hidesBackButton = true
                              
+                                
                                case .failure(_):
+                                
                                      print("エラー2")
                                 
                                      self.signinIndicator.stopAnimating()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 class OtherChoiceViewController: UIViewController{
@@ -27,8 +28,21 @@ class OtherChoiceViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // チェックボックスの処理
-               // インスタンス生成
+        
+               let  OtherChoiceLabel = UILabel()
+               OtherChoiceLabel.textAlignment = NSTextAlignment.center
+               OtherChoiceLabel.font = UIFont.systemFont(ofSize: 20)
+               OtherChoiceLabel.text = "その他に出ている症状はありますか？"
+               self.view.addSubview(OtherChoiceLabel)
+              
+               OtherChoiceLabel.snp.makeConstraints{ make in
+                    make.width.equalTo(500)
+                    make.height.equalTo(100)
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview().offset(-200)
+               }
+        
+        
                headacheCheckbox = UIButton()
                runnynoseCheckbox = UIButton()
                jointpainCheckbox = UIButton()
@@ -36,15 +50,6 @@ class OtherChoiceViewController: UIViewController{
                palpitationsCheckbox = UIButton()
                stomachacheCheckbox = UIButton()
                nauseaCheckbox = UIButton()
-        
-               // 大きさと位置を指定
-               headacheCheckbox.frame = CGRect(x: 70, y: 250, width: 30 ,height: 30)
-               runnynoseCheckbox.frame = CGRect(x: 70, y: 300, width: 30 ,height: 30)
-               jointpainCheckbox.frame = CGRect(x: 70, y: 350, width: 30 ,height: 30)
-               dizzyCheckbox.frame = CGRect(x: 70, y: 400, width: 30 ,height: 30)
-               palpitationsCheckbox.frame = CGRect(x: 70, y: 450, width: 30 ,height: 30)
-               stomachacheCheckbox.frame = CGRect(x: 70, y: 500, width: 30 ,height: 30)
-               nauseaCheckbox.frame = CGRect(x: 70, y: 550, width: 30 ,height: 30)
         
                // アクションを定義
                headacheCheckbox.addTarget(self, action: #selector(headacheCheckButton), for: .touchUpInside)
@@ -81,7 +86,61 @@ class OtherChoiceViewController: UIViewController{
                self.view.addSubview(palpitationsCheckbox)
                self.view.addSubview(stomachacheCheckbox)
                self.view.addSubview(nauseaCheckbox)
-
+    
+        
+               headacheCheckbox.snp.makeConstraints{ make in
+                   make.width.equalTo(30)
+                   make.height.equalTo(30)
+                   make.centerX.equalToSuperview().offset(-100)
+                   make.centerY.equalToSuperview().offset(-150)
+               }
+        
+               runnynoseCheckbox.snp.makeConstraints{ make in
+                   make.width.equalTo(30)
+                   make.height.equalTo(30)
+                   make.centerX.equalToSuperview().offset(-100)
+                   make.centerY.equalToSuperview().offset(-100)
+               }
+               
+               jointpainCheckbox.snp.makeConstraints{ make in
+                   make.width.equalTo(30)
+                   make.height.equalTo(30)
+                   make.centerX.equalToSuperview().offset(-100)
+                   make.centerY.equalToSuperview().offset(-50)
+               }
+        
+               dizzyCheckbox.snp.makeConstraints{ make in
+                   make.width.equalTo(30)
+                   make.height.equalTo(30)
+                   make.centerX.equalToSuperview().offset(-100)
+                   make.centerY.equalToSuperview()
+               }
+               
+               palpitationsCheckbox.snp.makeConstraints{ make in
+                   make.width.equalTo(30)
+                   make.height.equalTo(30)
+                   make.centerX.equalToSuperview().offset(-100)
+                   make.centerY.equalToSuperview().offset(+50)
+               }
+         
+               stomachacheCheckbox.snp.makeConstraints{ make in
+                   make.width.equalTo(30)
+                   make.height.equalTo(30)
+                   make.centerX.equalToSuperview().offset(-100)
+                   make.centerY.equalToSuperview().offset(+100)
+               }
+        
+               nauseaCheckbox.snp.makeConstraints{ make in
+                   make.width.equalTo(30)
+                   make.height.equalTo(30)
+                   make.centerX.equalToSuperview().offset(-100)
+                   make.centerY.equalToSuperview().offset(+150)
+               }
+        
+        
+        
+        
+        
         // ここからテキストの処理
                // ラベルの生成
                let headacheLabel = UILabel()
@@ -91,15 +150,6 @@ class OtherChoiceViewController: UIViewController{
                let palpitationsLabel = UILabel()
                let stomachacheLabel = UILabel()
                let nauseaLabel = UILabel()
-        
-               // 位置とサイズの指定
-               headacheLabel.frame = CGRect(x: 130, y: 250, width: UIScreen.main.bounds.size.width, height: 30)
-               runnynoseLabel.frame = CGRect(x: 130, y: 300, width: UIScreen.main.bounds.size.width, height: 30)
-               jointpainLabel.frame = CGRect(x: 130, y: 350, width: UIScreen.main.bounds.size.width, height: 30)
-               dizzyLabel.frame = CGRect(x: 130, y: 400, width: UIScreen.main.bounds.size.width, height: 30)
-               palpitationsLabel.frame = CGRect(x: 130, y: 450, width: UIScreen.main.bounds.size.width, height: 30)
-               stomachacheLabel.frame = CGRect(x: 130, y: 500, width: UIScreen.main.bounds.size.width, height: 30)
-               nauseaLabel.frame = CGRect(x: 130, y: 550, width: UIScreen.main.bounds.size.width, height: 30)
         
                // 横揃えの設定
                headacheLabel.textAlignment = NSTextAlignment.left
@@ -145,48 +195,85 @@ class OtherChoiceViewController: UIViewController{
                self.view.addSubview(palpitationsLabel)
                self.view.addSubview(stomachacheLabel)
                self.view.addSubview(nauseaLabel)
+        
+               
+               headacheLabel.snp.makeConstraints{ make in
+                  make.width.equalTo(200)
+                  make.height.equalTo(30)
+                  make.centerX.equalToSuperview().offset(+50)
+                  make.centerY.equalToSuperview().offset(-150)
+                  }
+       
+               runnynoseLabel.snp.makeConstraints{ make in
+                  make.width.equalTo(200)
+                  make.height.equalTo(30)
+                  make.centerX.equalToSuperview().offset(+50)
+                  make.centerY.equalToSuperview().offset(-100)
+                  }
+              
+               jointpainLabel.snp.makeConstraints{ make in
+                  make.width.equalTo(200)
+                  make.height.equalTo(30)
+                  make.centerX.equalToSuperview().offset(+50)
+                  make.centerY.equalToSuperview().offset(-50)
+                  }
+       
+               dizzyLabel.snp.makeConstraints{ make in
+                  make.width.equalTo(200)
+                  make.height.equalTo(30)
+                  make.centerX.equalToSuperview().offset(+50)
+                  make.centerY.equalToSuperview()
+                  }
+              
+               palpitationsLabel.snp.makeConstraints{ make in
+                  make.width.equalTo(200)
+                  make.height.equalTo(30)
+                  make.centerX.equalToSuperview().offset(+50)
+                  make.centerY.equalToSuperview().offset(+50)
+                 }
+        
+               stomachacheLabel.snp.makeConstraints{ make in
+                  make.width.equalTo(200)
+                  make.height.equalTo(30)
+                  make.centerX.equalToSuperview().offset(+50)
+                  make.centerY.equalToSuperview().offset(+100)
+                  }
+       
+               nauseaLabel.snp.makeConstraints{ make in
+                  make.width.equalTo(200)
+                  make.height.equalTo(30)
+                  make.centerX.equalToSuperview().offset(+50)
+                  make.centerY.equalToSuperview().offset(+150)
+                 }
 
         
         // ここからボタンの処理
         
-              // Buttonを生成する.
                 otherButton = UIButton()
-
-                // ボタンのサイズ.
-                let bWidth: CGFloat = 200
-                let bHeight: CGFloat = 50
-
-                // ボタンのX,Y座標.
-                let posbuttonX: CGFloat = self.view.frame.width/2 - bWidth/2
-                let posbuttonY: CGFloat = self.view.frame.height/1.3 - bHeight/2
-
-                // ボタンの設置座標とサイズを設定する.
-                otherButton.frame = CGRect(x: posbuttonX, y: posbuttonY, width: bWidth, height: bHeight)
-
-                // ボタンの背景色を設定.
                 otherButton.backgroundColor = UIColor.orange
-
-                // ボタンの枠を丸くする.
                 otherButton.layer.masksToBounds = true
-
-                // コーナーの半径を設定する.
                 otherButton.layer.cornerRadius = 20.0
-
-                // タイトルを設定する(通常時).
                 otherButton.setTitle("次へ", for: .normal)
                 otherButton.setTitleColor(UIColor.white, for: .normal)
-
-                // ボタンにタグをつける.
                 otherButton.tag = 1
-
-                // ボタンをViewに追加.
                 self.view.addSubview(otherButton)
+                
+                otherButton.snp.makeConstraints{ make in
+                    make.width.equalTo(250)
+                    make.height.equalTo(50)
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview().offset(+250)
+                }
+               
         
                // ボタンをタップで次画面に遷移.
                 otherButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
                 self.view.addSubview(otherButton)
          
-               // 次の画面のBackボタンを「戻る」に変更
+               
+                self.navigationController?.navigationBar.barTintColor = .white
+                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+                self.navigationController?.navigationBar.shadowImage = UIImage()
                 self.navigationItem.backBarButtonItem = UIBarButtonItem(
                    title:  "",
                    style:  .plain,
@@ -194,44 +281,50 @@ class OtherChoiceViewController: UIViewController{
                    action: nil
                  )
 
-    }
+          }
     
     
- override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
                super.didReceiveMemoryWarning()
-    }
+        }
     
             // チェックボックスのON/OFF処理
-    @objc func headacheCheckButton(sender: UIButton){
+        @objc func headacheCheckButton(sender: UIButton){
                   headacheCheckbox.isSelected = !headacheCheckbox.isSelected
-    }
-    @objc func runnynoseCheckButton(sender: UIButton){
+                  }
+    
+        @objc func runnynoseCheckButton(sender: UIButton){
                   runnynoseCheckbox.isSelected = !runnynoseCheckbox.isSelected
-    }
-    @objc func jointpainCheckButton(sender: UIButton){
+                  }
+    
+        @objc func jointpainCheckButton(sender: UIButton){
                   jointpainCheckbox.isSelected = !jointpainCheckbox.isSelected
-    }
-    @objc func dizzyCheckButton(sender: UIButton){
+                  }
+    
+        @objc func dizzyCheckButton(sender: UIButton){
                   dizzyCheckbox.isSelected = !dizzyCheckbox.isSelected
-    }
-    @objc func palpitationsCheckButton(sender: UIButton){
+                  }
+    
+        @objc func palpitationsCheckButton(sender: UIButton){
                   palpitationsCheckbox.isSelected = !palpitationsCheckbox.isSelected
-    }
-    @objc func stomachacheCheckButton(sender: UIButton){
+                  }
+    
+        @objc func stomachacheCheckButton(sender: UIButton){
                   stomachacheCheckbox.isSelected = !stomachacheCheckbox.isSelected
-    }
-    @objc func nauseaCheckButton(sender: UIButton){
+                  }
+    
+        @objc func nauseaCheckButton(sender: UIButton){
                   nauseaCheckbox.isSelected = !nauseaCheckbox.isSelected
-    }
+                  }
 
     
             // ボタンタップ処理
-    @objc func didTapButton() {
+        @objc func didTapButton() {
                let storyboard: UIStoryboard = self.storyboard!
                let nextView = storyboard.instantiateViewController(withIdentifier: "ClinicList")
                self.hidesBottomBarWhenPushed = true
-               navigationController?.pushViewController(nextView, animated: true)
+                    navigationController?.pushViewController(nextView, animated: true)   
                self.hidesBottomBarWhenPushed = false
-   }
+              }
     
-}
+    }

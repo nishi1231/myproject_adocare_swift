@@ -27,43 +27,30 @@ class ListDetailViewController: UIViewController {
     @IBOutlet weak var introductiontextlabel: UILabel!
     var introductiontext: String?
     
-    
     private var reservationButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     //UIScrollViewのインスタンス作成
-        let scrollView = UIScrollView()
-        
-        scrollView.frame = self.view.frame
-        
-        scrollView.contentSize = CGSize(width:self.view.frame.width, height:1000)
-        
-        self.view.addSubview(scrollView)
      
-     // 医師画像をlabelに渡す
-        doctorimageview?.sd_setImage(with: URL(string: doctorimage), placeholderImage:UIImage(named:"loading_doctor_icon"))
-
-     // 医師名をlabelに渡す
-        doctornamelabel.text = doctornametext
+        let scrollView = UIScrollView()
+            scrollView.frame = self.view.frame
+            scrollView.contentSize = CGSize(width:self.view.frame.width, height:1000)
+            self.view.addSubview(scrollView)
+     
+     
+            doctorimageview?.sd_setImage(with: URL(string: doctorimage), placeholderImage:UIImage(named:"loading_doctor_icon"))
+            doctornamelabel.text = doctornametext
+            hospitalnamelabel.text = hospitalnametext
+            introductiontextlabel.text = introductiontext
+            introductiontextlabel.numberOfLines = 0
+            introductiontextlabel.sizeToFit() //上寄せをリファクタする.snapkitでできるかも。
         
-     // 病院名をlabelに渡す
-        hospitalnamelabel.text = hospitalnametext
         
-     // 紹介文をlabelに渡し、テキストを上寄せ
-        introductiontextlabel.text = introductiontext
-        introductiontextlabel.numberOfLines = 0
-        introductiontextlabel.sizeToFit()
-        
-        
-    // floatボタンを設置
         let reservationButton = MDCFloatingButton()
-        // ボタンのサイズ.
         let bWidth: CGFloat = 200
         let bHeight: CGFloat = 50
-        // ボタンのX,Y座標.
         let posbuttonX: CGFloat = self.view.frame.width/2.4 - bWidth/2
         let posbuttonY: CGFloat = self.view.frame.height/1.1 - bHeight/2
         
@@ -81,7 +68,10 @@ class ListDetailViewController: UIViewController {
         
         self.view.addSubview(reservationButton)
         
-        // 次の画面のBackボタンを「戻る」に変更
+        
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(
            title:  "",
            style:  .plain,
@@ -98,6 +88,6 @@ class ListDetailViewController: UIViewController {
                 self.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = false
-    }
+            }
     
-}
+     }

@@ -25,8 +25,8 @@
 		7FAA31BD2334FA97007F6C3F /* MedicusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAA31BC2334FA97007F6C3F /* MedicusUITests.swift */; };
 		7FBE50C923E30EEE0022E7C2 /* ClinicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBE50C823E30EEE0022E7C2 /* ClinicListViewController.swift */; };
 		7FBE50CB2414C3EF0022E7C2 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBE50CA2414C3EF0022E7C2 /* ListDetailViewController.swift */; };
-		7FBE50CD243834FC0022E7C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FBE50CC243834FB0022E7C2 /* GoogleService-Info.plist */; };
 		7FDD8A5A2351CFF60003E668 /* TemperatureChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD8A592351CFF60003E668 /* TemperatureChoiceViewController.swift */; };
+		7FE88E00255041D900AFDAC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FE88DFF255041D800AFDAC2 /* GoogleService-Info.plist */; };
 		9F49B92F4D56F210C5AB0251 /* Pods_Medicus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A119D5351736FEDF0CB894 /* Pods_Medicus.framework */; };
 		F7E9900B2921044E821915BB /* Pods_Medicus_MedicusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA18EBBEFD35E218EBEFA93A /* Pods_Medicus_MedicusUITests.framework */; };
 /* End PBXBuildFile section */
@@ -79,8 +79,8 @@
 		7FAA31BE2334FA97007F6C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FBE50C823E30EEE0022E7C2 /* ClinicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicListViewController.swift; sourceTree = "<group>"; };
 		7FBE50CA2414C3EF0022E7C2 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
-		7FBE50CC243834FB0022E7C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FDD8A592351CFF60003E668 /* TemperatureChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureChoiceViewController.swift; sourceTree = "<group>"; };
+		7FE88DFF255041D800AFDAC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8420955A89DFFB7B6832CA8A /* Pods-Medicus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicus.release.xcconfig"; path = "Target Support Files/Pods-Medicus/Pods-Medicus.release.xcconfig"; sourceTree = "<group>"; };
 		A8A119D5351736FEDF0CB894 /* Pods_Medicus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medicus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA18EBBEFD35E218EBEFA93A /* Pods_Medicus_MedicusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medicus_MedicusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,7 +183,7 @@
 				7FA75659234B7A740017CE9C /* feverchoiceViewController.swift */,
 				7FAA31A32334FA97007F6C3F /* Assets.xcassets */,
 				7FAA31A82334FA97007F6C3F /* Info.plist */,
-				7FBE50CC243834FB0022E7C2 /* GoogleService-Info.plist */,
+				7FE88DFF255041D800AFDAC2 /* GoogleService-Info.plist */,
 			);
 			path = Medicus;
 			sourceTree = "<group>";
@@ -318,8 +318,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FAA31A42334FA97007F6C3F /* Assets.xcassets in Resources */,
-				7FBE50CD243834FC0022E7C2 /* GoogleService-Info.plist in Resources */,
 				7FAA31A22334FA94007F6C3F /* Main.storyboard in Resources */,
+				7FE88E00255041D900AFDAC2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,46 +11,52 @@ import Alamofire
 import SwiftyJSON
 import SDWebImage
 
-  struct Doctor : Codable{
+  struct Doctor : Codable {
+    
     let id : Int
     let full_name: String
     let hospital_name : String
     let introduction_text : String
     let profile_image : String
+    
    }
+
 
 class ClinicListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
     var doctors : [Doctor]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         let tableView : UITableView!
-        tableView = UITableView(frame: view.frame, style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
+            tableView = UITableView(frame: view.frame, style: .grouped)
+            tableView.delegate = self
+            tableView.dataSource = self
+            view.addSubview(tableView)
         
-        view.addSubview(tableView)
+            tableView.estimatedRowHeight = 500
         
-        tableView.estimatedRowHeight = 500
         
-        // 次の画面のBackボタンを「戻る」に変更
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(
            title:  "",
            style:  .plain,
           target: nil,
           action: nil
-         )
+        )
         
         //DoctorテーブルからAPIで取得
         AF.request("http://127.0.0.1:8000/api/v1/product/doctorlist")
             .responseJSON{res in
                 guard let json = res.data
-                else{
-                    return
-                }
-                self.doctors = try! JSONDecoder().decode([Doctor].self, from: json)
+                     else { return }
+                     self.doctors = try! JSONDecoder().decode([Doctor].self, from: json)
 
                 //Debug
                 print("--- Doctors JSON ---")
@@ -61,7 +67,7 @@ class ClinicListViewController: UIViewController, UITableViewDelegate, UITableVi
                     print("NAME:" + doctor.hospital_name)
                     print("NAME:" + doctor.introduction_text)
                     print("NAME:" + doctor.profile_image)
-                }
+                 }
                 tableView.reloadData()
            }
     }
@@ -84,7 +90,7 @@ class ClinicListViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.textLabel?.text = doctor.full_name
             cell.detailTextLabel?.text = doctor.introduction_text
             cell.imageView?.sd_setImage(with: URL(string: doctor.profile_image), placeholderImage:UIImage(named:"loading_doctor_icon"))
-        }
+              }
         return cell
     }
     
@@ -95,24 +101,19 @@ class ClinicListViewController: UIViewController, UITableViewDelegate, UITableVi
         if let selecteddoctor = self.doctors?[indexPath.row]{
         
         
-        //ListDetailViewへ遷移する
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "ListDetail")as!ListDetailViewController
-        self.hidesBottomBarWhenPushed = true
+               let storyboard: UIStoryboard = self.storyboard!
+               let nextView = storyboard.instantiateViewController(withIdentifier: "ListDetail")as!ListDetailViewController
+               self.hidesBottomBarWhenPushed = true
         
-        //ListDetailViewへ値を渡す
-          
-        //Stringで渡して、次の画面でUIimageに変換必要？調査する。
-        nextView.doctorimage = selecteddoctor.profile_image
-            
-        nextView.doctornametext = selecteddoctor.full_name
-        nextView.hospitalnametext = selecteddoctor.hospital_name
-        nextView.introductiontext = selecteddoctor.introduction_text
+               nextView.doctorimage = selecteddoctor.profile_image
+               nextView.doctornametext = selecteddoctor.full_name
+               nextView.hospitalnametext = selecteddoctor.hospital_name
+               nextView.introductiontext = selecteddoctor.introduction_text
         
-        //pushで遷移する
-        navigationController?.pushViewController(nextView, animated: true)
-        self.hidesBottomBarWhenPushed = false
-        }
+        
+              navigationController?.pushViewController(nextView, animated: true)
+              self.hidesBottomBarWhenPushed = false
+         }
         
        }
     

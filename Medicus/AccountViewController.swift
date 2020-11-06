@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import KeychainSwift
+
+
 
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -15,6 +20,10 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         let systemIcons = ["profile_icon","health_insurance_card_icon","notification_icon","terms_of_service_icon","signout_icon"]
         var items: [String] = ["プロフィール", "健康保険証", "通知", "利用規約", "ログアウト"]
     
+        let keychain = KeychainSwift()
+        var AccountKey = String()
+        var LogoutKey = String()
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,89 +37,132 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
           tableView.delegate = self
           tableView.separatorStyle = .none
           view.addSubview(self.tableView)
-        
           
+        
+          self.navigationController?.navigationBar.barTintColor = .white
+          self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+          self.navigationController?.navigationBar.shadowImage = UIImage()
+          self.navigationItem.backBarButtonItem = UIBarButtonItem(
+               title:  "",
+               style:  .plain,
+              target: nil,
+              action: nil
+             )
+        
         }
     //セルタップし、値を渡し、遷移させる
        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
             switch indexPath.row {
+                
             case 0:
-                // 数学Iのセルタップ時処理
+                
+                
                 let storyboard: UIStoryboard = self.storyboard!
                 let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")as!OtherChoiceViewController
                 self.navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = true
 
+                
             case 1:
-                // 数学Aのセルタップ時
+                
+                
                 let storyboard: UIStoryboard = self.storyboard!
                 let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")as!OtherChoiceViewController
                 self.navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = true
+                
 
             case 2:
-                // 数学IIのセルタップ時
+                
+                
                 let storyboard: UIStoryboard = self.storyboard!
                 let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")as!OtherChoiceViewController
                 self.navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = true
+                
 
             case 3:
-                // 数学Bのセルタップ時
-                let storyboard: UIStoryboard = self.storyboard!
-                let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")as!OtherChoiceViewController
-                self.navigationController?.pushViewController(nextView, animated: true)
-                self.hidesBottomBarWhenPushed = true
-
-            case 4:
-                // 数学IIIのセルタップ時
-                let storyboard: UIStoryboard = self.storyboard!
-                let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")as!OtherChoiceViewController
-                self.navigationController?.pushViewController(nextView, animated: true)
-                self.hidesBottomBarWhenPushed = true
-
-            case 5:
-                // 数学Cのセルタップ時
-                /*let storyboard: UIStoryboard = self.storyboard!
-                let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")as!OtherChoiceViewController
-                self.navigationController?.pushViewController(nextView, animated: true)
-                self.hidesBottomBarWhenPushed = true*/
                 
-                //アラート生成
-                //UIAlertControllerのスタイルがalert
+                
+                let storyboard: UIStoryboard = self.storyboard!
+                let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")as!OtherChoiceViewController
+                self.navigationController?.pushViewController(nextView, animated: true)
+                self.hidesBottomBarWhenPushed = true
+
+                
+            case 4:
+                
+                
                 let alert: UIAlertController = UIAlertController(
                     title: "ログアウトしますか？",
                     message:  "",
                     preferredStyle:  UIAlertController.Style.alert
                     )
-                // 確定ボタンの処理
+                
                 let confirmAction: UIAlertAction = UIAlertAction(title: "ログアウトする", style: UIAlertAction.Style.default, handler:{
-                    // 確定ボタンが押された時の処理をクロージャ実装する
                     (action: UIAlertAction!) -> Void in
-                    //実際の処理
-                    print("ログアウト")
                     
+                    //simulatorではnilになる。実機は未検証
+                    self.keychain.accessGroup = "com.ADoCare.Medicus"
+                    guard self.keychain.get(self.AccountKey) != nil else {
+                        print("LogoutKeyがnilかも")
+                        print(self.AccountKey)
+                        return
+                        
+                    }
                     
+                    print(self.AccountKey)
+                    print("ログアウト処理")
+                
+                    let urlString: String = "http://127.0.0.1:8000/rest-auth/logout/"
+                    let headers: HTTPHeaders = ["Authorization" : "Bearer "+self.AccountKey+"","Content-Type": "application/json"]
                     
-                    
-                    
-                    
-                })
+                    AF.request(urlString, method: .post, parameters: nil, encoding: JSONEncoding.default , headers: headers)
+                          .validate(statusCode: 200..<300)
+                          .responseJSON { response in
+                              switch response.result {
+                                    
+                                case .success(_):
+                                      
+                                    
+                                      let storyboard: UIStoryboard = self.storyboard!
+                                      let nextView = storyboard.instantiateViewController(withIdentifier: "Landing")
+                                      self.hidesBottomBarWhenPushed = true
+                                      self.navigationController?.pushViewController(nextView, animated: true)
+                                      self.hidesBottomBarWhenPushed = false
+                              
+                                      print("ログアウト成功")
+                                       
+                                case .failure(_):
+                                 
+                                      print("ログアウト失敗")
+                                      
+                               }
+                          }
+                     }
+        
+               )
                 // キャンセルボタンの処理
                 let cancelAction: UIAlertAction = UIAlertAction(title: "戻る", style: UIAlertAction.Style.cancel, handler:{
-                    // キャンセルボタンが押された時の処理をクロージャ実装する
                     (action: UIAlertAction!) -> Void in
-                    //実際の処理
-                    print("キャンセル")
-                })
+
+                    
+                    let when = DispatchTime.now() + 5
+                            DispatchQueue.main.asyncAfter(deadline: when){
+                                // your code with delay
+                                alert.dismiss(animated: true, completion: nil)
+                                
+                            }
+                       }
+                )
 
                 //UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加
                 alert.addAction(cancelAction)
                 alert.addAction(confirmAction)
 
                 //実際にAlertを表示する
-                        present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
                 
             default:
                

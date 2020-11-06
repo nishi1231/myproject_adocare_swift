@@ -19,6 +19,9 @@ target 'Medicus' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git'
   pod 'NVActivityIndicatorView'
+  pod 'KeychainAccess'
+  pod 'fluid-slider'
+  pod 'KeychainSwift', '~> 19.0'
   
 
 

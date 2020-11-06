@@ -68,14 +68,18 @@ class LandingViewController: UIViewController {
                signupButton.addTarget(self, action: #selector(didTapsignupButton), for: .touchUpInside)
                self.view.addSubview(signupButton)
         
-              self.navigationItem.backBarButtonItem = UIBarButtonItem(
-              title:  "",
-              style:  .plain,
-              target: nil,
-              action: nil
-          )
+        
+               self.navigationController?.navigationBar.barTintColor = .white
+               self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+               self.navigationController?.navigationBar.shadowImage = UIImage()
+               self.navigationItem.backBarButtonItem = UIBarButtonItem(
+                    title:  "",
+                    style:  .plain,
+                   target: nil,
+                   action: nil
+               )
               
-    }
+       }
     
 
     @objc func didTapsigninButton() {

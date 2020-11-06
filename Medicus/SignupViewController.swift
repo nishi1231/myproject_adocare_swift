@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 import SnapKit
 import NVActivityIndicatorView
+import KeychainSwift
 
 
 class SignupViewController: UIViewController,UITextFieldDelegate {
@@ -29,6 +30,8 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
+    let keychain = KeychainSwift()
+    let AccountKey : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +45,6 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
                 passwordtextfield.autocorrectionType = .no
                 passwordtextfield.textContentType = .newPassword
                //password autofillは原因不明なので後回しで修正
-        
-                
                 self.view.addSubview(mailtextfield)
                 self.view.addSubview(passwordtextfield)
         
@@ -74,16 +75,12 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
                     make.height.equalTo(50)
                     make.centerX.equalToSuperview()
                     make.centerY.equalToSuperview()
-                    
                 }
                 
-                let myBackButton = UIBarButtonItem(
-                    title: "",
-                    style: .plain,
-                    target: nil,
-                    action: nil
-                   )
-                self.navigationItem.backBarButtonItem = myBackButton
+        
+                self.navigationController?.navigationBar.barTintColor = .white
+                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+                self.navigationController?.navigationBar.shadowImage = UIImage()
 
             
         signupButton.addTarget(self, action: #selector(SignupViewController.didTapsignupButton(_:)), for: .touchUpInside)
@@ -102,7 +99,7 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
                         signupButton.alpha = 1.0
                         self.emailerrormessage.isHidden = true
                     
-                      } else {
+                     } else {
                         
                         signupButton.isEnabled = false
                         signupButton.alpha = 0.5
@@ -115,7 +112,7 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
                return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
                }
     
-    //バリデーションチェックでパスワードのメッセージ
+    //バリデーションチェックでパスワードエラーメッセージ
     @objc func passwordErrorMessege(_ textField: UITextField) {
     
           guard let passwordtext = passwordtextfield.text else { return }
@@ -124,13 +121,13 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
                         
                         passworderrormessage.isHidden = true
                         
-                      } else {
+                     } else {
                         
                         passworderrormessage.isHidden = false
                         passworderrormessage.text = "英数字8文字以上で入力してください"
                     
                      }
-                  }
+                 }
     
         func validatePassword(candidate: String) -> Bool {
              let passwordRegex = "^(?=.*?[A-Za-z])(?=.*?[0-9])[A-Za-z0-9]{8,}$"
@@ -148,27 +145,41 @@ class SignupViewController: UIViewController,UITextFieldDelegate {
               let headers: HTTPHeaders = ["Content-Type": "application/json"]
               let parameters: Parameters = [
                   "email": mailtextfield.text!,
-                  "password": passwordtextfield.text!
-                    ]
+                  "password1": passwordtextfield.text!
+              ]
                         
                 AF.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default , headers: headers)
                     .validate(statusCode: 200..<300)
                     .responseJSON { response in
                         switch response.result {
                               
-                          case .success(_):
+                          case .success(let value):
                                 print("成功2")
                                 
-                                self.activityIndicator.stopAnimating()
+                                let json = JSON(value)
+                                if let token = json["key"].string {
                                 
+                                    //jsonを解析できてない可能性、下記で再度試す。
+                                    print(token)
+                                    self.keychain.accessGroup = "com.ADoCare.Medicus"
+                                    self.keychain.set(token, forKey: self.AccountKey)
+                                    
+                                }
+                             
+                                self.activityIndicator.stopAnimating()
+                            
                                 let storyboard: UIStoryboard = self.storyboard!
                                 let nextView = storyboard.instantiateViewController(withIdentifier: "UITabbar")
                                 self.hidesBottomBarWhenPushed = true
                                 self.navigationController?.pushViewController(nextView, animated: true)
                                 self.hidesBottomBarWhenPushed = false
+                                     nextView.navigationItem.hidesBackButton = true
                         
-                          case .failure(_):
+                          case .failure(let jsonObject):
                                 print("エラー2")
+                                
+                                let json = JSON(jsonObject)
+                                print("JSON: \(json)")
                                 
                                 //他のユーザーが使っているメアドの分岐を記載
                                 self.activityIndicator.stopAnimating()

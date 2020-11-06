@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CoughCoiceViewController: UIViewController {
     
@@ -18,69 +19,55 @@ class CoughCoiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // テキスト表示
-                let titleLabel = UILabel() // ラベルの生成
-                titleLabel.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.size.width, height: 44) // 位置とサイズの指定
-                titleLabel.textAlignment = NSTextAlignment.center // 横揃えの設定
-                titleLabel.text = "せきは出ますか？" // テキストの設定
-                titleLabel.textColor = UIColor.black // テキストカラーの設定
-                titleLabel.font = UIFont(name: "Arial", size: 22) // フォントの設定
-                self.view.addSubview(titleLabel) // ラベルの追加
-
         
-
-               // Buttonを生成する.
-                CoughCoiceYesButton = UIButton()
+                 let CoughLabel = UILabel()
+                     CoughLabel.textAlignment = NSTextAlignment.center
+                     CoughLabel.font = UIFont.systemFont(ofSize: 22)
+                     CoughLabel.text = "せきは出ますか？"
+                     self.view.addSubview(CoughLabel)
+       
+                 CoughLabel.snp.makeConstraints{ make in
+                      make.width.equalTo(500)
+                      make.height.equalTo(100)
+                      make.centerX.equalToSuperview()
+                      make.centerY.equalToSuperview().offset(-100)
+                    }
+        
+        
                 CoughCoiceNotButton = UIButton()
-
-                // ボタンのサイズ.
-                let bYesWidth: CGFloat = 100
-                let bYesHeight: CGFloat = 100
-
-                let bNotWidth: CGFloat = 100
-                let bNotHeight: CGFloat = 100
-
-               // ボタンのX,Y座標.
-                let posYesX: CGFloat = self.view.frame.width/1.4 - bYesWidth/2
-                let posYesY: CGFloat = self.view.frame.height/1.9 - bYesHeight/2
-        
-                let posNotX: CGFloat = self.view.frame.width/3.4 - bNotWidth/2
-                let posNotY: CGFloat = self.view.frame.height/1.9 - bNotHeight/2
-        
-        
-               // ボタンの設置座標とサイズを設定する.
-                CoughCoiceYesButton.frame = CGRect(x: posYesX, y: posYesY, width: bYesWidth, height: bYesHeight)
-                
-                CoughCoiceNotButton.frame = CGRect(x: posNotX, y: posNotY, width: bNotWidth, height: bNotHeight)
-
-              // ボタンの背景色を設定.
-                CoughCoiceYesButton.backgroundColor = UIColor(red: 92/255, green: 193/255, blue: 220/255, alpha: 1)
                 CoughCoiceNotButton.backgroundColor = UIColor(red: 236/255, green: 101/255, blue: 103/255, alpha: 1)
-
-                // ボタンの枠を丸くする.
-                CoughCoiceYesButton.layer.masksToBounds = true
                 CoughCoiceNotButton.layer.masksToBounds = true
-
-                // コーナーの半径を設定する.
-                CoughCoiceYesButton.layer.cornerRadius = 20.0
                 CoughCoiceNotButton.layer.cornerRadius = 20.0
-
-                // タイトルを設定する(通常時).
-                CoughCoiceYesButton.setTitle("はい", for: .normal)
-                CoughCoiceYesButton.setTitleColor(UIColor.white, for: .normal)
-                
                 CoughCoiceNotButton.setTitle("いいえ", for: .normal)
                 CoughCoiceNotButton.setTitleColor(UIColor.white, for: .normal)
-        
-
-                // ボタンにタグをつける.
-                CoughCoiceYesButton.tag = 1
-                CoughCoiceNotButton.tag = 2
-
-                
-                // ボタンをViewに追加.
-                self.view.addSubview(CoughCoiceYesButton)
+                CoughCoiceNotButton.tag = 1
                 self.view.addSubview(CoughCoiceNotButton)
+      
+                CoughCoiceNotButton.snp.makeConstraints{ make in
+                   make.width.equalTo(100)
+                   make.height.equalTo(100)
+                   make.centerX.equalToSuperview().offset(-75)
+                   make.centerY.equalToSuperview()
+                }
+
+        
+        
+                CoughCoiceYesButton = UIButton()
+                CoughCoiceYesButton.backgroundColor = UIColor(red: 92/255, green: 193/255, blue: 220/255, alpha: 1)
+                CoughCoiceYesButton.layer.masksToBounds = true
+                CoughCoiceYesButton.layer.cornerRadius = 20.0
+                CoughCoiceYesButton.setTitle("はい", for: .normal)
+                CoughCoiceYesButton.setTitleColor(UIColor.white, for: .normal)
+                CoughCoiceYesButton.tag = 1
+                self.view.addSubview(CoughCoiceYesButton)
+                
+                CoughCoiceYesButton.snp.makeConstraints{ make in
+                    make.width.equalTo(100)
+                    make.height.equalTo(100)
+                    make.centerX.equalToSuperview().offset(+75)
+                    make.centerY.equalToSuperview()
+                }
+
         
                // ボタンをタップで次画面に遷移.
                CoughCoiceYesButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
@@ -90,24 +77,25 @@ class CoughCoiceViewController: UIViewController {
                self.view.addSubview(CoughCoiceNotButton)
         
         
-
-              // 次の画面のBackボタンを「戻る」に変更
-              self.navigationItem.backBarButtonItem = UIBarButtonItem(
-              title:  "",
-              style:  .plain,
-              target: nil,
-              action: nil
-               )
-             }
+               self.navigationController?.navigationBar.barTintColor = .white
+               self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+               self.navigationController?.navigationBar.shadowImage = UIImage()
+               self.navigationItem.backBarButtonItem = UIBarButtonItem(
+                   title:  "",
+                   style:  .plain,
+                   target: nil,
+                   action: nil
+                  )
+                }
     
     
     @objc func didTapButton() {
                 let storyboard: UIStoryboard = self.storyboard!
                 let nextView = storyboard.instantiateViewController(withIdentifier: "PeriodInput")
                 self.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(nextView, animated: true)
+                     navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = false
-            }
+               }
         }
     
 
