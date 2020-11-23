@@ -67,7 +67,7 @@ class ClinicListViewController: UIViewController, UITableViewDelegate, UITableVi
                     print("NAME:" + doctor.hospital_name)
                     print("NAME:" + doctor.introduction_text)
                     print("NAME:" + doctor.profile_image)
-                 }
+                }
                 tableView.reloadData()
            }
     }
@@ -113,9 +113,9 @@ class ClinicListViewController: UIViewController, UITableViewDelegate, UITableVi
         
               navigationController?.pushViewController(nextView, animated: true)
               self.hidesBottomBarWhenPushed = false
-         }
+        }
         
-       }
+      }
     
     }
     

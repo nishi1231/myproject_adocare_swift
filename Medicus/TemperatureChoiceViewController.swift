@@ -8,11 +8,12 @@
 
 import UIKit
 import SnapKit
-import fluid_slider
+
 
 class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
     
     
+    var sliderValue: UILabel!
     private var temperatureButton: UIButton!
     
     
@@ -32,26 +33,22 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
                    make.centerX.equalToSuperview()
                    make.centerY.equalToSuperview().offset(-100)
                   }
+               
         
+              let initialValue: Float = 38.0
+              let slider = UISlider()
+                  slider.minimumValue = 35.0
+                  slider.maximumValue = 41.0
+                  slider.value = initialValue
+                  slider.tintColor = .orange
+                  slider.addTarget(self, action: #selector(sliderDidChangeValue(_:)), for: .valueChanged)
+                  view.addSubview(slider)
                 
-               let slider = Slider()
-                   slider.attributedTextForFraction = { fraction in
-               let formatter = NumberFormatter()
-                   formatter.maximumIntegerDigits = 3
-                   formatter.maximumFractionDigits = 1
-               let string = formatter.string(from: (fraction * 6 + 35.0) as NSNumber) ?? ""
-                    return NSAttributedString(string: string)
-                   }
-        
-                slider.setMinimumLabelAttributedText(NSAttributedString(string: "35.0"))
-                slider.setMaximumLabelAttributedText(NSAttributedString(string: "41.0"))
-                slider.fraction = 0.5
-                slider.shadowOffset = CGSize(width: 0, height: 10)
-                slider.shadowBlur = 5
-                slider.shadowColor = UIColor(white: 0, alpha: 0.1)
-                slider.contentViewColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
-                slider.valueViewColor = .white
-                self.view.addSubview(slider)
+                  sliderValue = UILabel()
+                  sliderValue.textAlignment = .center
+                  sliderValue.text = String(initialValue)
+                  view.addSubview(sliderValue)
+
         
                slider.snp.makeConstraints{ make in
                     make.width.equalTo(250)
@@ -59,16 +56,23 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
                     make.centerX.equalToSuperview()
                     make.centerY.equalToSuperview()
                 }
+               
+               sliderValue.snp.makeConstraints{ make in
+                    make.width.equalTo(250)
+                    make.height.equalTo(50)
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview().offset(+50)
+                }
         
         
-                temperatureButton = UIButton()
-                temperatureButton.backgroundColor = UIColor.orange
-                temperatureButton.layer.masksToBounds = true
-                temperatureButton.layer.cornerRadius = 20.0
-                temperatureButton.setTitle("次へ", for: .normal)
-                temperatureButton.setTitleColor(UIColor.white, for: .normal)
-                temperatureButton.tag = 1
-                self.view.addSubview(temperatureButton)
+                   temperatureButton = UIButton()
+                   temperatureButton.backgroundColor = UIColor.orange
+                   temperatureButton.layer.masksToBounds = true
+                   temperatureButton.layer.cornerRadius = 20.0
+                   temperatureButton.setTitle("次へ", for: .normal)
+                   temperatureButton.setTitleColor(UIColor.white, for: .normal)
+                   temperatureButton.tag = 1
+                   self.view.addSubview(temperatureButton)
                 
                 temperatureButton.snp.makeConstraints{ make in
                     make.width.equalTo(250)
@@ -93,14 +97,21 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
                }
                 
     
+          @objc func sliderDidChangeValue(_ sender: UISlider) {
+                 let value = sender.value
+                 sliderValue.text = String(round(value*10) / 10)
+          }
+    
+    
            @objc func didTapButton() {
                       let storyboard: UIStoryboard = self.storyboard!
                       let nextView = storyboard.instantiateViewController(withIdentifier: "CoughCoice")
                       self.hidesBottomBarWhenPushed = true
                       navigationController?.pushViewController(nextView, animated: true)
                       self.hidesBottomBarWhenPushed = false
-                     }
-       }
+          }
+    
+    }
 
 
 

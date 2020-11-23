@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zwS-XY-Cex">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J7g-1g-kSD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -69,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ngp-g7-RSj" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="57" y="254" width="300" height="42.5"/>
+                                <rect key="frame" x="57" y="270" width="300" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Y3l-9a-Ddq"/>
                                 </constraints>
@@ -99,7 +99,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-Lk-GZE" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="57" y="326.5" width="300" height="43"/>
+                                <rect key="frame" x="57" y="332" width="300" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="cUh-EX-cxy"/>
                                 </constraints>
@@ -129,7 +129,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoK-0q-DPM">
-                                <rect key="frame" x="57" y="299" width="300" height="16"/>
+                                <rect key="frame" x="57" y="304.5" width="300" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="yAw-Z8-O1R"/>
                                 </constraints>
@@ -138,7 +138,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N44-fF-5Gm">
-                                <rect key="frame" x="57" y="372" width="300" height="16"/>
+                                <rect key="frame" x="57" y="366.5" width="300" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="4Kd-OI-zfb"/>
                                 </constraints>
@@ -744,16 +744,16 @@
     </scenes>
     <designables>
         <designable name="6gk-Lk-GZE">
-            <size key="intrinsicContentSize" width="300" height="42.623046875"/>
+            <size key="intrinsicContentSize" width="118" height="32"/>
         </designable>
         <designable name="LTc-72-rCg">
-            <size key="intrinsicContentSize" width="300" height="42.623046875"/>
+            <size key="intrinsicContentSize" width="118" height="32"/>
         </designable>
         <designable name="TVE-GK-Rie">
-            <size key="intrinsicContentSize" width="300" height="42.623046875"/>
+            <size key="intrinsicContentSize" width="154" height="32"/>
         </designable>
         <designable name="ngp-g7-RSj">
-            <size key="intrinsicContentSize" width="300" height="42.623046875"/>
+            <size key="intrinsicContentSize" width="154" height="32"/>
         </designable>
     </designables>
     <resources>
