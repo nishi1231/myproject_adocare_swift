@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J7g-1g-kSD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J7g-1g-kSD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -506,6 +506,37 @@
             </objects>
             <point key="canvasLocation" x="12676.8115942029" y="-125.22321428571428"/>
         </scene>
+        <!--Doctor Calendar View Controller-->
+        <scene sceneID="s8w-Wr-pBL">
+            <objects>
+                <viewController storyboardIdentifier="DoctorCalendar" id="3cB-xa-aWE" customClass="DoctorCalendarViewController" customModule="Medicus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SEL-Uv-RaV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="uFn-di-XY8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mx7-TO-dIl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dfe-pW-3Gz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14476.8115942029" y="-125.22321428571428"/>
+        </scene>
+        <!--Doctor Time Choice Cell View Controller-->
+        <scene sceneID="sv7-VH-Rqb">
+            <objects>
+                <viewController storyboardIdentifier="DoctorTimeChoiceCell" id="xeO-Yh-7Vd" customClass="DoctorTimeChoiceCellViewController" customModule="Medicus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0He-Ne-yJe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bXE-Qr-jkT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GSU-Vd-3sA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="15164" y="-125"/>
+        </scene>
         <!--Account View Controller-->
         <scene sceneID="2rN-te-DwO">
             <objects>
@@ -740,6 +771,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ta-7M-7Bn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750.72463768115949" y="1478.5714285714284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eSc-Rj-cLg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7CQ-8a-bQ0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="axl-z7-tve">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3cB-xa-aWE" kind="relationship" relationship="rootViewController" id="YBY-T4-OIR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UW6-D1-zV9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13638" y="-125"/>
         </scene>
     </scenes>
     <designables>

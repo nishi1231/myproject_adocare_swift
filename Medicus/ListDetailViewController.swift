@@ -84,7 +84,7 @@ class ListDetailViewController: UIViewController {
     // ボタンタップ処理
      @objc func didTapButton() {
                 let storyboard: UIStoryboard = self.storyboard!
-                let nextView = storyboard.instantiateViewController(withIdentifier: "ClinicList")
+                let nextView = storyboard.instantiateViewController(withIdentifier: "DoctorCalendar")
                 self.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = false
