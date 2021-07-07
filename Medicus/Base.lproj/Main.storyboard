@@ -69,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ngp-g7-RSj" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="57" y="270" width="300" height="32"/>
+                                <rect key="frame" x="57" y="254" width="300" height="42.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Y3l-9a-Ddq"/>
                                 </constraints>
@@ -99,7 +99,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-Lk-GZE" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="57" y="332" width="300" height="32"/>
+                                <rect key="frame" x="57" y="326.5" width="300" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="cUh-EX-cxy"/>
                                 </constraints>
@@ -129,7 +129,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoK-0q-DPM">
-                                <rect key="frame" x="57" y="304.5" width="300" height="16"/>
+                                <rect key="frame" x="57" y="299" width="300" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="yAw-Z8-O1R"/>
                                 </constraints>
@@ -138,7 +138,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N44-fF-5Gm">
-                                <rect key="frame" x="57" y="366.5" width="300" height="16"/>
+                                <rect key="frame" x="57" y="372" width="300" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="4Kd-OI-zfb"/>
                                 </constraints>
@@ -480,6 +480,7 @@
                         <viewLayoutGuide key="safeArea" id="eqM-4d-she"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LfN-IB-nc3" firstAttribute="top" secondItem="XzI-1d-tCl" secondAttribute="bottom" constant="14" id="Asl-eZ-os2"/>
                             <constraint firstItem="HZC-6M-NaM" firstAttribute="top" secondItem="LfN-IB-nc3" secondAttribute="bottom" constant="5" id="CxB-RU-Z4V"/>
                             <constraint firstItem="DP9-lT-0Nl" firstAttribute="centerX" secondItem="vIX-EE-S20" secondAttribute="centerX" id="OHD-G8-Xug"/>
                             <constraint firstItem="HZC-6M-NaM" firstAttribute="centerX" secondItem="vIX-EE-S20" secondAttribute="centerX" id="Q8U-ug-uYx"/>
@@ -487,9 +488,11 @@
                             <constraint firstItem="LfN-IB-nc3" firstAttribute="centerX" secondItem="vIX-EE-S20" secondAttribute="centerX" id="WVj-wl-9Go"/>
                             <constraint firstItem="DP9-lT-0Nl" firstAttribute="top" secondItem="HZC-6M-NaM" secondAttribute="bottom" constant="10" id="afG-5Y-6BZ"/>
                             <constraint firstItem="LfN-IB-nc3" firstAttribute="leading" secondItem="eqM-4d-she" secondAttribute="leading" constant="100" id="cBZ-jo-etq"/>
+                            <constraint firstItem="XzI-1d-tCl" firstAttribute="trailing" secondItem="eqM-4d-she" secondAttribute="trailing" id="gLj-rO-0wh"/>
                             <constraint firstItem="eqM-4d-she" firstAttribute="trailing" secondItem="LfN-IB-nc3" secondAttribute="trailing" constant="100" id="jjn-yT-Zhx"/>
                             <constraint firstItem="HZC-6M-NaM" firstAttribute="leading" secondItem="eqM-4d-she" secondAttribute="leading" constant="100" id="oAQ-l2-7Zb"/>
-                            <constraint firstItem="LfN-IB-nc3" firstAttribute="top" secondItem="XzI-1d-tCl" secondAttribute="bottom" constant="14" id="wtL-a0-c8y"/>
+                            <constraint firstItem="XzI-1d-tCl" firstAttribute="leading" secondItem="eqM-4d-she" secondAttribute="leading" id="oZ3-C6-vdW"/>
+                            <constraint firstItem="XzI-1d-tCl" firstAttribute="top" secondItem="eqM-4d-she" secondAttribute="top" id="sBg-fO-UOW"/>
                             <constraint firstItem="eqM-4d-she" firstAttribute="trailing" secondItem="HZC-6M-NaM" secondAttribute="trailing" constant="100" id="x9B-7D-59e"/>
                             <constraint firstItem="eqM-4d-she" firstAttribute="trailing" secondItem="DP9-lT-0Nl" secondAttribute="trailing" constant="50" id="yM0-wG-WDA"/>
                         </constraints>
@@ -793,16 +796,16 @@
     </scenes>
     <designables>
         <designable name="6gk-Lk-GZE">
-            <size key="intrinsicContentSize" width="118" height="32"/>
+            <size key="intrinsicContentSize" width="300" height="42.623046875"/>
         </designable>
         <designable name="LTc-72-rCg">
-            <size key="intrinsicContentSize" width="118" height="32"/>
+            <size key="intrinsicContentSize" width="300" height="42.623046875"/>
         </designable>
         <designable name="TVE-GK-Rie">
-            <size key="intrinsicContentSize" width="154" height="32"/>
+            <size key="intrinsicContentSize" width="300" height="42.623046875"/>
         </designable>
         <designable name="ngp-g7-RSj">
-            <size key="intrinsicContentSize" width="154" height="32"/>
+            <size key="intrinsicContentSize" width="300" height="42.623046875"/>
         </designable>
     </designables>
     <resources>

@@ -22,7 +22,8 @@ target 'Medicus' do
   pod 'KeychainAccess'
   pod 'fluid-slider'
   pod 'KeychainSwift', '~> 19.0'
-  
+  pod 'FSCalendar'
+  pod 'CalculateCalendarLogic'
 
 
   target 'MedicusTests' do

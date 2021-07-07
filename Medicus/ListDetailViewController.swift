@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 import SDWebImage
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
@@ -29,10 +30,12 @@ class ListDetailViewController: UIViewController {
     
     private var reservationButton: UIButton!
     
+    var reservation_reception_dates = [String]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         
      
         let scrollView = UIScrollView()
             scrollView.frame = self.view.frame
@@ -81,13 +84,92 @@ class ListDetailViewController: UIViewController {
 
      }
     
+    
+    
+    func getdoctorReservation() {
+        AF.request("http://127.0.0.1:8000/api/v1/product/doctorreservationreception?doctor=2")
+         .responseJSON{ [self]response in
+              switch response.result {
+                      case .success(let value):
+                          // 成功の場合
+                         let reservertion_jsonObject = JSON(value)
+                         
+                         
+                         let doctor = reservertion_jsonObject.arrayValue.map { $0["doctor"].intValue }
+                         
+                         let reservation_dates1 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date1"].stringValue }
+                         
+                         let reservation_dates2 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date2"].stringValue }
+                         
+                         let reservation_dates3 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date3"].stringValue }
+                     
+                         let reservation_dates4 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date4"].stringValue }
+                     
+                         let reservation_dates5 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date5"].stringValue }
+                     
+                         let reservation_dates6 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date6"].stringValue }
+                     
+                         let reservation_dates7 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date7"].stringValue }
+                     
+                         let reservation_dates8 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date8"].stringValue }
+                     
+                         let reservation_dates9 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date9"].stringValue }
+                     
+                         let reservation_dates10 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date10"].stringValue }
+                     
+                         let reservation_dates11 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date11"].stringValue }
+                     
+                         let reservation_dates12 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date12"].stringValue }
+                     
+                         let reservation_dates13 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date13"].stringValue }
+                     
+                         let reservation_dates14 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date14"].stringValue }
+
+                         
+                         let reservation_dates_summry =
+                                    reservation_dates1 +
+                                    reservation_dates2 +
+                                    reservation_dates3 +
+                                    reservation_dates4 +
+                                    reservation_dates5 +
+                                    reservation_dates6 +
+                                    reservation_dates7 +
+                                    reservation_dates8 +
+                                    reservation_dates9 +
+                                    reservation_dates10 +
+                                    reservation_dates11 +
+                                    reservation_dates12 +
+                                    reservation_dates13 +
+                                    reservation_dates14
+                         
+                         self.reservation_reception_dates = reservation_dates_summry
+                             
+                         print("テスト")
+                         print(doctor)
+                         print(self.reservation_reception_dates)
+                          
+                      case .failure(let error):
+                          // 失敗の場合
+                          print(error.localizedDescription)
+                          print("エラーです")
+              }
+          }
+        
+    }
+    
     // ボタンタップ処理
      @objc func didTapButton() {
                 let storyboard: UIStoryboard = self.storyboard!
-                let nextView = storyboard.instantiateViewController(withIdentifier: "DoctorCalendar")
+                let nextView = storyboard.instantiateViewController(withIdentifier: "DoctorCalendar") as! UINavigationController
+                let followingVC = nextView.viewControllers[0] as! DoctorCalendarViewController
                 self.hidesBottomBarWhenPushed = true
+        
+                followingVC.reservation_reception_date_array = self.reservation_reception_dates
+        
+        
                 navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = false
+        
             }
     
      }
