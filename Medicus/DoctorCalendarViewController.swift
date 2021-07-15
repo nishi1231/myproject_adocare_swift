@@ -16,17 +16,13 @@ import SwiftyJSON
 
 class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var somedays : Array = [String]()
+    
+    var reservation_reception_start_time_array = [String]()
+    
+    
+    var reservation_reception_end_time_array = [String]()
     
     var reservation_reception_date_array = [String]()
-
-    
-    fileprivate let gregorian = Calendar(identifier: .gregorian)
-        fileprivate let formatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            return formatter
-        }()
         
         fileprivate weak var calendar: FSCalendar!
         fileprivate weak var eventLabel: UILabel!
@@ -99,76 +95,6 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
                action: nil
            )
         
-        /*
-           AF.request("http://127.0.0.1:8000/api/v1/product/doctorreservationreception?doctor=2")
-            .responseJSON{ [self]response in
-                 switch response.result {
-                         case .success(let value):
-                             // 成功の場合
-                            let reservertion_jsonObject = JSON(value)
-                            
-                            
-                            let doctor = reservertion_jsonObject.arrayValue.map { $0["doctor"].intValue }
-                            
-                            let reservation_dates1 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date1"].stringValue }
-                            
-                            let reservation_dates2 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date2"].stringValue }
-                            
-                            let reservation_dates3 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date3"].stringValue }
-                        
-                            let reservation_dates4 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date4"].stringValue }
-                        
-                            let reservation_dates5 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date5"].stringValue }
-                        
-                            let reservation_dates6 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date6"].stringValue }
-                        
-                            let reservation_dates7 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date7"].stringValue }
-                        
-                            let reservation_dates8 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date8"].stringValue }
-                        
-                            let reservation_dates9 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date9"].stringValue }
-                        
-                            let reservation_dates10 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date10"].stringValue }
-                        
-                            let reservation_dates11 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date11"].stringValue }
-                        
-                            let reservation_dates12 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date12"].stringValue }
-                        
-                            let reservation_dates13 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date13"].stringValue }
-                        
-                            let reservation_dates14 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date14"].stringValue }
-
-                            
-                            let reservation_dates_summry =
-                                       reservation_dates1 +
-                                       reservation_dates2 +
-                                       reservation_dates3 +
-                                       reservation_dates4 +
-                                       reservation_dates5 +
-                                       reservation_dates6 +
-                                       reservation_dates7 +
-                                       reservation_dates8 +
-                                       reservation_dates9 +
-                                       reservation_dates10 +
-                                       reservation_dates11 +
-                                       reservation_dates12 +
-                                       reservation_dates13 +
-                                       reservation_dates14
-                            
-                            self.reservation_reception_dates = reservation_dates_summry
-                                
-                            print("テスト")
-                            print(doctor)
-                            print(self.reservation_reception_dates)
-                             
-                         case .failure(let error):
-                             // 失敗の場合
-                             print(error.localizedDescription)
-                             print("エラーです")
-                 }
-             }*/
-        
-        
     }
 
 
@@ -188,34 +114,24 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
     
    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int{
             
-    
+
         let gregorian: Calendar = Calendar(identifier: .gregorian)
         var dateFormatter1: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return formatter
         }()
 
-    //ここから前のコード
-     /*   somedays = ["2021-06-03",
-     
-                    "2021-06-06",
-                    "2021-06-12",
-                    "2021-06-25"]*/
-    
-    //呼び出しタイミングで、値取得できていなさそう。
-       print("関数で表示できるかテスト")
-       print(self.reservation_reception_date_array)
-
     
         let dateString : String = dateFormatter1.string(from:date)
+        print(dateString)
             
-        if self.somedays.contains(dateString) {
+        if self.reservation_reception_date_array.contains(dateString) {
              
               return 1
             
             } else {
-            
+              print("失敗")
               return 0
             
             }
@@ -239,16 +155,22 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
         
             cell.textLabel?.text = self.items[indexPath.row]
         
-        if(indexPath.row % 2 == 0){
-            cell.layer.backgroundColor = UIColor.orange.cgColor
-            cell.layer.borderColor = UIColor.orange.cgColor
+        for reservation_select_time in items {
         
-        } else {
-            cell.layer.backgroundColor = UIColor.lightGray.cgColor
-            cell.layer.borderColor = UIColor.lightGray.cgColor
+        
             
-        }
+           if reservation_reception_start_time_array <= reservation_select_time &&
+              reservation_select_time <= reservation_reception_end_time_array/*(indexPath.row % 2 == 0)*/{
+               cell.layer.backgroundColor = UIColor.orange.cgColor
+               cell.layer.borderColor = UIColor.orange.cgColor
         
+            } else {
+               cell.layer.backgroundColor = UIColor.lightGray.cgColor
+               cell.layer.borderColor = UIColor.lightGray.cgColor
+            
+          }
+        
+       }
         return cell
     }
 

@@ -25,7 +25,6 @@ class DoctorTimeChoiceCellViewController: UICollectionViewCell {
         
         textLabel = UILabel(frame: CGRect(x:0, y:0, width:frame.width, height:frame.height))
         textLabel?.text = "nil"
-        //textLabel?.backgroundColor = UIColor.white
         textLabel?.textColor = UIColor.white
         textLabel?.font = UIFont.systemFont(ofSize: 15)
         textLabel?.textAlignment = NSTextAlignment.center

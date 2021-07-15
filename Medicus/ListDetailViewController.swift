@@ -12,6 +12,7 @@ import SwiftyJSON
 import SDWebImage
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
+import Foundation
 
 class ListDetailViewController: UIViewController {
     
@@ -29,6 +30,10 @@ class ListDetailViewController: UIViewController {
     var introductiontext: String?
     
     private var reservationButton: UIButton!
+    
+    var reservation_reception_start_time = [String]()
+    
+    var reservation_reception_end_time = [String]()
     
     var reservation_reception_dates = [String]()
     
@@ -48,7 +53,7 @@ class ListDetailViewController: UIViewController {
             hospitalnamelabel.text = hospitalnametext
             introductiontextlabel.text = introductiontext
             introductiontextlabel.numberOfLines = 0
-            introductiontextlabel.sizeToFit() //上寄せをリファクタする.snapkitでできるかも。
+            introductiontextlabel.sizeToFit() 
         
         
         let reservationButton = MDCFloatingButton()
@@ -65,6 +70,9 @@ class ListDetailViewController: UIViewController {
         reservationButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
         reservationButton.sizeToFit()
         reservationButton.tag = 1
+        
+        getdoctorReservation()
+        
         
         // ボタンをタップで次画面に遷移.
          reservationButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
@@ -85,7 +93,7 @@ class ListDetailViewController: UIViewController {
      }
     
     
-    
+    //次画面でカレンダーに日付を渡すために、先に呼び出す。
     func getdoctorReservation() {
         AF.request("http://127.0.0.1:8000/api/v1/product/doctorreservationreception?doctor=2")
          .responseJSON{ [self]response in
@@ -96,6 +104,10 @@ class ListDetailViewController: UIViewController {
                          
                          
                          let doctor = reservertion_jsonObject.arrayValue.map { $0["doctor"].intValue }
+                        
+                         let start_time = reservertion_jsonObject.arrayValue.map { $0["start_time"].stringValue }
+                        
+                         let end_time = reservertion_jsonObject.arrayValue.map { $0["end_time"].stringValue }
                          
                          let reservation_dates1 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date1"].stringValue }
                          
@@ -124,8 +136,7 @@ class ListDetailViewController: UIViewController {
                          let reservation_dates13 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date13"].stringValue }
                      
                          let reservation_dates14 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date14"].stringValue }
-
-                         
+                        
                          let reservation_dates_summry =
                                     reservation_dates1 +
                                     reservation_dates2 +
@@ -142,10 +153,17 @@ class ListDetailViewController: UIViewController {
                                     reservation_dates13 +
                                     reservation_dates14
                          
+                        
+                         self.reservation_reception_start_time = start_time
+                         
+                         self.reservation_reception_end_time = end_time
+                        
                          self.reservation_reception_dates = reservation_dates_summry
                              
-                         print("テスト")
+                
                          print(doctor)
+                         print(start_time)
+                         print(end_time)
                          print(self.reservation_reception_dates)
                           
                       case .failure(let error):
@@ -160,12 +178,14 @@ class ListDetailViewController: UIViewController {
     // ボタンタップ処理
      @objc func didTapButton() {
                 let storyboard: UIStoryboard = self.storyboard!
-                let nextView = storyboard.instantiateViewController(withIdentifier: "DoctorCalendar") as! UINavigationController
-                let followingVC = nextView.viewControllers[0] as! DoctorCalendarViewController
+                let nextView = storyboard.instantiateViewController(withIdentifier: "DoctorCalendar") as! DoctorCalendarViewController
                 self.hidesBottomBarWhenPushed = true
         
-                followingVC.reservation_reception_date_array = self.reservation_reception_dates
+                nextView.reservation_reception_start_time_array = self.reservation_reception_start_time
         
+                nextView.reservation_reception_end_time_array = self.reservation_reception_end_time
+        
+                nextView.reservation_reception_date_array = self.reservation_reception_dates
         
                 navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = false
