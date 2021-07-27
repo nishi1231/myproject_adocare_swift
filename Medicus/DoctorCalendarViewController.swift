@@ -19,17 +19,23 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
     
     var reservation_reception_start_time_array = [String]()
     
-    
     var reservation_reception_end_time_array = [String]()
     
     var reservation_reception_date_array = [String]()
+    
+    var reservation_reception_start_time_string_value = String()
+    
+    var reservation_reception_end_time_string_value = String()
+    
+    var reservation_select_time_string_intime_index  = [Int]()
+    
         
         fileprivate weak var calendar: FSCalendar!
         fileprivate weak var eventLabel: UILabel!
     
     
     var myCollectionView : UICollectionView!
-    let items = ["8:00", "8:15", "8:30", "8:45", "9:00", "9:15","9:30","9:45","10:00","10:15","10:30","10:45","11:00","11:15","11:30","11:45","12:00","12:15","12:30","12:45","13:00","13:15","13:30","13:45","14:00","14:15","14:30","14:45","15:00","15:00","15:15","15:30","15:45","16:00","16:15","16:30","16:45","17:00","17:15","17:30","17:45","18:00","18:15","18:30","18:45","19:00","19:15","19:30","19:45","20:00","20:15","20:30","20:45"]
+    let timeItems = ["08:00", "08:15", "08:30", "08:45", "09:00", "09:15","09:30","09:45","10:00","10:15","10:30","10:45","11:00","11:15","11:30","11:45","12:00","12:15","12:30","12:45","13:00","13:15","13:30","13:45","14:00","14:15","14:30","14:45","15:00","15:00","15:15","15:30","15:45","16:00","16:15","16:30","16:45","17:00","17:15","17:30","17:45","18:00","18:15","18:30","18:45","19:00","19:15","19:30","19:45","20:00","20:15","20:30","20:45"]
     
     
     override func viewDidLoad() {
@@ -74,8 +80,7 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
 
         let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
             myCollectionView = UICollectionView(
-            frame: CGRect(x: 0, y:self.view.bounds.midY, width: screenSize.width, height: 70), collectionViewLayout: layout
-             )
+            frame: CGRect(x: 0, y:self.view.bounds.midY, width: screenSize.width, height: 70), collectionViewLayout: layout)
         
         
            myCollectionView.register(DoctorTimeChoiceCellViewController.self, forCellWithReuseIdentifier: "MyCell")
@@ -102,21 +107,29 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
  
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-            let storyboard: UIStoryboard = self.storyboard!
-            let nextView = storyboard.instantiateViewController(withIdentifier: "DoctorCalendar")
-            self.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(nextView, animated: true)
-            self.hidesBottomBarWhenPushed = false
+        //押した日付の時間幅をチェック
+        //予約のある日(カレンダー青丸）はcollctionview呼び出し、色反映
+        //予約のない日は、collectionviewを非表示
+        //ここでAPI叩いてもいいかも？それとも値渡しで行う？dateで一致する日の場合、その時間幅チェックして日付オレンジにする。
+        
+        let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            let da = formatter.string(from: date)
+            
+        print(da)
+        print(date)
+        
+        
+        
 
     }
-    
     
     
    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int{
             
 
         let gregorian: Calendar = Calendar(identifier: .gregorian)
-        var dateFormatter1: DateFormatter = {
+        let dateFormatter1: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return formatter
@@ -124,22 +137,28 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
 
     
         let dateString : String = dateFormatter1.string(from:date)
-        print(dateString)
             
         if self.reservation_reception_date_array.contains(dateString) {
              
               return 1
             
             } else {
-              print("失敗")
+
               return 0
             
             }
-       }
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
+        
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "DoctorCalendar")
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(nextView, animated: true)
+        self.hidesBottomBarWhenPushed = false
+        
     }
 
     
@@ -153,25 +172,57 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
             cell.layer.borderWidth = 2
             cell.layer.cornerRadius  = 14
         
-            cell.textLabel?.text = self.items[indexPath.row]
-        
-        for reservation_select_time in items {
+            cell.textLabel?.text = self.timeItems[indexPath.row]
         
         
-            
-           if reservation_reception_start_time_array <= reservation_select_time &&
-              reservation_select_time <= reservation_reception_end_time_array/*(indexPath.row % 2 == 0)*/{
-               cell.layer.backgroundColor = UIColor.orange.cgColor
-               cell.layer.borderColor = UIColor.orange.cgColor
-        
+        //[String]をstringに変換する
+        for reservation_reception_start_time in reservation_reception_start_time_array {
+            let reservation_reception_start_time_string = reservation_reception_start_time
+                reservation_reception_start_time_string_value = reservation_reception_start_time_string
+        }
+            //[String]をstringに変換する
+        for reservation_reception_end_time in reservation_reception_end_time_array {
+                let reservation_reception_end_time_string = reservation_reception_end_time
+                    reservation_reception_end_time_string_value = reservation_reception_end_time_string
+        }
+                //[String]をstringに変換し、:00を追加、時間が予約時間内に収まるかチェック。
+        for (index, element) in timeItems.enumerated() {
+                var reservation_select_time_string = element
+                    reservation_select_time_string += ":00"
+
+           if reservation_reception_start_time_string_value <= reservation_select_time_string && reservation_select_time_string <= reservation_reception_end_time_string_value {
+
+                reservation_select_time_string_intime_index.append(index)
+
             } else {
-               cell.layer.backgroundColor = UIColor.lightGray.cgColor
-               cell.layer.borderColor = UIColor.lightGray.cgColor
+                print("時間外です")
+           }
             
-          }
+            
+        let select_time_ordered_set: NSOrderedSet = NSOrderedSet(array: reservation_select_time_string_intime_index)
+            // 再度Arrayに戻す
+            reservation_select_time_string_intime_index = select_time_ordered_set.array as! [Int]
+            
         
-       }
-        return cell
+        if self.reservation_select_time_string_intime_index.contains(indexPath.row){
+            
+            cell.layer.backgroundColor = UIColor.orange.cgColor
+            cell.layer.borderColor = UIColor.orange.cgColor
+
+            print("成功")
+            print(indexPath.row)
+
+         } else {
+            print("失敗")
+            print(indexPath.row)
+
+            cell.layer.backgroundColor = UIColor.lightGray.cgColor
+            cell.layer.borderColor = UIColor.lightGray.cgColor
+         }
+        
+         }
+    
+       return cell
     }
 
 
