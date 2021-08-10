@@ -25,8 +25,8 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
     
     var reservation_reception_date_array = [String]()
     
-    var reservation_reception_start_time_string_value = String()
-    var reservation_reception_end_time_string_value = String()
+    var reservation_reception_start_time_string_text = String()
+    var reservation_reception_end_time_string_text = String()
     
     var reservation_select_time_string_intime_index  = [Int]()
     
@@ -110,14 +110,10 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
  
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-
         let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
             let select_day = formatter.string(from: date)
             
-        print(select_day)
-        print(date)
-        
     //カレンダーのタップした日付が、配列に含まれていれば処理
         if self.reservation_reception_date_array.contains(select_day){
             
@@ -125,22 +121,13 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
             
              reservation_reception_end_time_array_pass = reservation_reception_end_time_array
             
-            print("OK")
-            print(reservation_reception_date_array)
-            print(select_day)
-            
-            
           } else {
-            print("NG")
-            print(reservation_reception_date_array)
-            print(select_day)
-            //ここでOKとされない値おくれば日アクティブになりそう。[0]とかでもいい？
-            
-            //NGで時間外になるようになった。ただ、成功になっているので、NG時の処理を入れる。
- 
-            reservation_reception_start_time_array_pass = [String](repeating: "0", count: 14)
-            
-            reservation_reception_end_time_array_pass = [String](repeating: "0", count: 14)
+
+            // 含まれていない時も失敗でfor文回すして、collectionviewをグレーにする。
+            reservation_reception_start_time_array_pass.removeAll()
+            reservation_reception_end_time_array_pass.removeAll()
+            reservation_reception_start_time_array_pass = ["00:00:00"]
+            reservation_reception_end_time_array_pass = ["00:00:00"]
             
          }
         
@@ -150,7 +137,6 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
     
    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int{
             
-
         let gregorian: Calendar = Calendar(identifier: .gregorian)
         let dateFormatter1: DateFormatter = {
         let formatter = DateFormatter()
@@ -170,6 +156,7 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
               return 0
             
             }
+    
     }
     
     
@@ -201,12 +188,12 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
         //[String]をstringに変換する
         for reservation_reception_start_time in reservation_reception_start_time_array_pass {
             let reservation_reception_start_time_string = reservation_reception_start_time
-                reservation_reception_start_time_string_value = reservation_reception_start_time_string
+                reservation_reception_start_time_string_text = reservation_reception_start_time_string
         }
             //[String]をstringに変換する
         for reservation_reception_end_time in reservation_reception_end_time_array_pass {
                 let reservation_reception_end_time_string = reservation_reception_end_time
-                    reservation_reception_end_time_string_value = reservation_reception_end_time_string
+                    reservation_reception_end_time_string_text = reservation_reception_end_time_string
         }
                 //[String]をstringに変換し、:00を追加、時間が予約時間内に収まるかチェック。
         for (index, element) in timeItems.enumerated() {
@@ -214,33 +201,32 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
                     reservation_select_time_string += ":00"
 
            //Stringに変換し、時間が予約対象内であれば、indexを配列に変換
-           if reservation_reception_start_time_string_value <= reservation_select_time_string && reservation_select_time_string <= reservation_reception_end_time_string_value {
+           if reservation_reception_start_time_string_text <= reservation_select_time_string && reservation_select_time_string <= reservation_reception_end_time_string_text {
 
                 reservation_select_time_string_intime_index.append(index)
-               
 
-
-            } else {
-                //reservation_select_time_string_intime_indexに失敗になるような値、もしくは初期化するようにする？
-                //多分このスコープのforの繰り返しで上書きされているせいかも？
-                //reservation_select_time_string_intime_index.removeAll()
+            } else if reservation_reception_start_time_string_text == "00:00:00" {
+                //初期でcollectionviewの枠が出るので、それを非表示にする
+                reservation_select_time_string_intime_index.removeAll()
+                reservation_select_time_string_intime_index.append(-1)
+                print("予約できない日です")
+ 
+           } else {
                 print("時間外です")
+            
            }
             
-            print("テスト中")
-            print(reservation_reception_start_time_string_value)
-            print(reservation_select_time_string)
-            print(reservation_reception_end_time_string_value)
-            print(reservation_select_time_string_intime_index)
-            
+        }
 
         //indexの数値の重複を削除
         let select_time_ordered_set: NSOrderedSet = NSOrderedSet(array: reservation_select_time_string_intime_index)
             // 再度Arrayに戻す
             reservation_select_time_string_intime_index = select_time_ordered_set.array as! [Int]
-            
         
-        if self.reservation_select_time_string_intime_index.contains(indexPath.row){
+            
+        for _ in reservation_select_time_string_intime_index {
+        
+          if self.reservation_select_time_string_intime_index.contains(indexPath.row){
             
             cell.layer.backgroundColor = UIColor.orange.cgColor
             cell.layer.borderColor = UIColor.orange.cgColor
@@ -249,18 +235,20 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
             print(reservation_select_time_string_intime_index)
             print(indexPath.row)
 
-         } else {
+          } else {
             print("失敗")
+            print(reservation_select_time_string_intime_index)
             print(indexPath.row)
 
             cell.layer.backgroundColor = UIColor.lightGray.cgColor
             cell.layer.borderColor = UIColor.lightGray.cgColor
          }
-        
+            
        }
-    
+
        return cell
     }
 
 
 }
+
