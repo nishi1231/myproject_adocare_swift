@@ -210,8 +210,11 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
                 reservation_select_time_string_intime_index.removeAll()
                 reservation_select_time_string_intime_index.append(-1)
                 print("予約できない日です")
+            
  
            } else {
+                //デフォルトでcollectionviewを非アクティブにしておく。
+                reservation_select_time_string_intime_index.append(-1)
                 print("時間外です")
             
            }
@@ -231,17 +234,11 @@ class DoctorCalendarViewController: UIViewController, FSCalendarDataSource, FSCa
             cell.layer.backgroundColor = UIColor.orange.cgColor
             cell.layer.borderColor = UIColor.orange.cgColor
 
-            print("成功")
-            print(reservation_select_time_string_intime_index)
-            print(indexPath.row)
-
           } else {
-            print("失敗")
-            print(reservation_select_time_string_intime_index)
-            print(indexPath.row)
 
             cell.layer.backgroundColor = UIColor.lightGray.cgColor
             cell.layer.borderColor = UIColor.lightGray.cgColor
+            
          }
             
        }

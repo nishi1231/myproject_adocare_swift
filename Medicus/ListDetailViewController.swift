@@ -13,6 +13,7 @@ import SDWebImage
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
 import Foundation
+import SnapKit
 
 class ListDetailViewController: UIViewController {
     
@@ -34,6 +35,8 @@ class ListDetailViewController: UIViewController {
     var reservation_reception_start_time = [String]()
     
     var reservation_reception_end_time = [String]()
+    
+    var reservation_reception_date_add = [String]()
     
     var reservation_reception_dates = [String]()
     
@@ -57,12 +60,7 @@ class ListDetailViewController: UIViewController {
         
         
         let reservationButton = MDCFloatingButton()
-        let bWidth: CGFloat = 200
-        let bHeight: CGFloat = 50
-        let posbuttonX: CGFloat = self.view.frame.width/2.4 - bWidth/2
-        let posbuttonY: CGFloat = self.view.frame.height/1.1 - bHeight/2
-        
-        reservationButton.frame = CGRect(x: posbuttonX, y: posbuttonY, width: bWidth, height: bHeight)
+
         reservationButton.setTitle("      オンラインでの診察を申し込む      ", for: .normal)
         reservationButton.setTitleColor(UIColor.white, for: .normal)
         reservationButton.mode = .expanded
@@ -70,14 +68,18 @@ class ListDetailViewController: UIViewController {
         reservationButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
         reservationButton.sizeToFit()
         reservationButton.tag = 1
+        self.view.addSubview(reservationButton)
+        reservationButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        
+        reservationButton.snp.makeConstraints{ make in
+            make.width.equalTo(300)
+            make.height.equalTo(50)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-50)
+        }
+        
         
         getdoctorReservation()
-        
-        
-        // ボタンをタップで次画面に遷移.
-         reservationButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        
-        self.view.addSubview(reservationButton)
         
         
         self.navigationController?.navigationBar.barTintColor = .white
@@ -108,57 +110,24 @@ class ListDetailViewController: UIViewController {
                          let start_time = reservertion_jsonObject.arrayValue.map { $0["start_time"].stringValue }
                         
                          let end_time = reservertion_jsonObject.arrayValue.map { $0["end_time"].stringValue }
-                         
-                         let reservation_dates1 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date1"].stringValue }
-                         
-                         let reservation_dates2 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date2"].stringValue }
-                         
-                         let reservation_dates3 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date3"].stringValue }
-                     
-                         let reservation_dates4 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date4"].stringValue }
-                     
-                         let reservation_dates5 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date5"].stringValue }
-                     
-                         let reservation_dates6 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date6"].stringValue }
-                     
-                         let reservation_dates7 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date7"].stringValue }
-                     
-                         let reservation_dates8 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date8"].stringValue }
-                     
-                         let reservation_dates9 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date9"].stringValue }
-                     
-                         let reservation_dates10 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date10"].stringValue }
-                     
-                         let reservation_dates11 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date11"].stringValue }
-                     
-                         let reservation_dates12 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date12"].stringValue }
-                     
-                         let reservation_dates13 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date13"].stringValue }
-                     
-                         let reservation_dates14 = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["date14"].stringValue }
+                            
+                         var number_count = 0
                         
-                         let reservation_dates_summry =
-                                    reservation_dates1 +
-                                    reservation_dates2 +
-                                    reservation_dates3 +
-                                    reservation_dates4 +
-                                    reservation_dates5 +
-                                    reservation_dates6 +
-                                    reservation_dates7 +
-                                    reservation_dates8 +
-                                    reservation_dates9 +
-                                    reservation_dates10 +
-                                    reservation_dates11 +
-                                    reservation_dates12 +
-                                    reservation_dates13 +
-                                    reservation_dates14
-                         
+                         for _ in 1..<14 {
+                            number_count += 1
+                            
+                            var sNum1:String = String(number_count)
+                            var date_number: String = "date_number"
+                            var date = date_number.replacingOccurrences(of: "_number", with: sNum1)
+                            
+                            var reservation_date = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["\(date)"].stringValue }
+                            
+                            reservation_reception_dates.append(contentsOf: reservation_date)
+                            
+                        }
                         
                          self.reservation_reception_start_time = start_time
-                         
                          self.reservation_reception_end_time = end_time
-                        
-                         self.reservation_reception_dates = reservation_dates_summry
                              
                 
                          print(doctor)
