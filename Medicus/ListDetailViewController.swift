@@ -17,6 +17,7 @@ import SnapKit
 
 class ListDetailViewController: UIViewController {
     
+    var doctor_id  = Int()
     
     @IBOutlet weak var doctorimageview: UIImageView!
     var doctorimage: String!
@@ -97,7 +98,7 @@ class ListDetailViewController: UIViewController {
     
     //次画面でカレンダーに日付を渡すために、先に呼び出す。
     func getdoctorReservation() {
-        AF.request("http://127.0.0.1:8000/api/v1/product/doctorreservationreception?doctor=2")
+        AF.request("http://127.0.0.1:8000/api/v1/product/doctorreservationreception?doctor=\(doctor_id)")
          .responseJSON{ [self]response in
               switch response.result {
                       case .success(let value):
@@ -116,9 +117,9 @@ class ListDetailViewController: UIViewController {
                          for _ in 1..<14 {
                             number_count += 1
                             
-                            var sNum1:String = String(number_count)
+                            var number_count_str:String = String(number_count)
                             var date_number: String = "date_number"
-                            var date = date_number.replacingOccurrences(of: "_number", with: sNum1)
+                            var date = date_number.replacingOccurrences(of: "_number", with: number_count_str)
                             
                             var reservation_date = reservertion_jsonObject.arrayValue.map { $0["reservation_dates"]["\(date)"].stringValue }
                             

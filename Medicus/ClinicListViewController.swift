@@ -104,7 +104,8 @@ class ClinicListViewController: UIViewController, UITableViewDelegate, UITableVi
                let storyboard: UIStoryboard = self.storyboard!
                let nextView = storyboard.instantiateViewController(withIdentifier: "ListDetail")as!ListDetailViewController
                self.hidesBottomBarWhenPushed = true
-        
+               
+               nextView.doctor_id = selecteddoctor.id
                nextView.doctorimage = selecteddoctor.profile_image
                nextView.doctornametext = selecteddoctor.full_name
                nextView.hospitalnametext = selecteddoctor.hospital_name
