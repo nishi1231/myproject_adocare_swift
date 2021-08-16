@@ -8,13 +8,15 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
+import Foundation
 
 
 class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
     
     
-    var sliderValue: UILabel!
-    private var temperatureButton: UIButton!
+      var sliderValue: UILabel!
+      private var temperatureButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -32,7 +34,7 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
                    make.height.equalTo(100)
                    make.centerX.equalToSuperview()
                    make.centerY.equalToSuperview().offset(-100)
-                  }
+              }
                
         
               let initialValue: Float = 38.0
@@ -84,6 +86,7 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
         
                temperatureButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
                self.view.addSubview(temperatureButton)
+        
                
                self.navigationController?.navigationBar.barTintColor = .white
                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -94,7 +97,7 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
                   target: nil,
                   action: nil
                   )
-               }
+          }
                 
     
           @objc func sliderDidChangeValue(_ sender: UISlider) {
@@ -103,15 +106,37 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
           }
     
     
-           @objc func didTapButton() {
-                      let storyboard: UIStoryboard = self.storyboard!
-                      let nextView = storyboard.instantiateViewController(withIdentifier: "CoughCoice")
-                      self.hidesBottomBarWhenPushed = true
-                      navigationController?.pushViewController(nextView, animated: true)
-                      self.hidesBottomBarWhenPushed = false
+          @objc func didTapButton() {
+            
+                   let realm = try! Realm()
+            
+                   var nsstring : NSString = NSString(string: sliderValue.text!)
+                   var slider_value_float : Float = nsstring.floatValue
+ 
+                   try! realm.write {
+                        realm.add(Interview(value: ["temperature": slider_value_float]))
+                        print("データ書き込み")
+                        print(slider_value_float)
+                    }
+                 
+                   let storyboard: UIStoryboard = self.storyboard!
+                   let nextView = storyboard.instantiateViewController(withIdentifier: "CoughCoice")
+                   self.hidesBottomBarWhenPushed = true
+                   navigationController?.pushViewController(nextView, animated: true)
+                   self.hidesBottomBarWhenPushed = false
+            
+                   //テストで書き込みされたデータを見る。
+            
+                  let results2 = realm.objects(Interview.self)
+                  print("データ取得")
+                  print(results2)
+            
+            
+            
+            
+            
           }
     
     }
-
 
 
