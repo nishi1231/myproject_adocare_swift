@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
  
 class feverchoiceViewController: UIViewController {
     
@@ -97,7 +98,14 @@ class feverchoiceViewController: UIViewController {
 
             }
     
-                @objc func didTapButton() {
+            @objc func didTapButton() {
+                
+                let realm = try! Realm()
+                
+                try! realm.write {
+                    realm.deleteAll()
+                }
+                    
                 let storyboard: UIStoryboard = self.storyboard!
                 let nextView = storyboard.instantiateViewController(withIdentifier: "TemperatureChoice")
                 self.hidesBottomBarWhenPushed = true

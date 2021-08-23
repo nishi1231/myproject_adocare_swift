@@ -116,8 +116,7 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
                    try! realm.write {
                         realm.add(Interview(value: ["temperature": slider_value_float]))
                         print("データ書き込み")
-                        print(slider_value_float)
-                    }
+                    } 
                  
                    let storyboard: UIStoryboard = self.storyboard!
                    let nextView = storyboard.instantiateViewController(withIdentifier: "CoughCoice")
@@ -130,10 +129,6 @@ class TemperatureChoiceViewController: UIViewController, UITextFieldDelegate {
                   let results2 = realm.objects(Interview.self)
                   print("データ取得")
                   print(results2)
-            
-            
-            
-            
             
           }
     

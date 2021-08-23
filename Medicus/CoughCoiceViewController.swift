@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class CoughCoiceViewController: UIViewController {
     
@@ -70,10 +71,10 @@ class CoughCoiceViewController: UIViewController {
 
         
                // ボタンをタップで次画面に遷移.
-               CoughCoiceYesButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+               CoughCoiceYesButton.addTarget(self, action: #selector(didTapYesButton), for: .touchUpInside)
                self.view.addSubview(CoughCoiceYesButton)
         
-               CoughCoiceNotButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+               CoughCoiceNotButton.addTarget(self, action: #selector(didTapNoButton), for: .touchUpInside)
                self.view.addSubview(CoughCoiceNotButton)
         
         
@@ -89,14 +90,53 @@ class CoughCoiceViewController: UIViewController {
                 }
     
     
-    @objc func didTapButton() {
+    @objc func didTapYesButton() {
+                
+                let realm = try! Realm()
+
+                try! realm.write {
+                    realm.add(Interview(value: ["cough": true]))
+                      print("データ書き込み")
+                }
+        
+        
                 let storyboard: UIStoryboard = self.storyboard!
                 let nextView = storyboard.instantiateViewController(withIdentifier: "PeriodInput")
                 self.hidesBottomBarWhenPushed = true
                      navigationController?.pushViewController(nextView, animated: true)
                 self.hidesBottomBarWhenPushed = false
-               }
+        
+               let results2 = realm.objects(Interview.self)
+               print("データ取得")
+               print(results2)
+        
         }
+    
+    
+    @objc func didTapNoButton() {
+                
+                let realm = try! Realm()
+
+                try! realm.write {
+                    realm.add(Interview(value: ["cough": false]))
+                      print("データ書き込み")
+                }
+        
+        
+                let storyboard: UIStoryboard = self.storyboard!
+                let nextView = storyboard.instantiateViewController(withIdentifier: "PeriodInput")
+                self.hidesBottomBarWhenPushed = true
+                     navigationController?.pushViewController(nextView, animated: true)
+                self.hidesBottomBarWhenPushed = false
+        
+               let results2 = realm.objects(Interview.self)
+               print("データ取得")
+               print(results2)
+        
+        }
+    
+    
+  }
     
 
 

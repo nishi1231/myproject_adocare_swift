@@ -8,10 +8,11 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class PeriodInputController: UIViewController, UITextFieldDelegate{
 
-    
+    var period: NSString!
     private var PeriodButton: UIButton!
 
     
@@ -100,13 +101,13 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
         
             }
     
-                  // 小数点を入力チェック
+                  
         @objc func textField(_ PeriodTextField: UITextField,shouldChangeCharactersIn range: NSRange, replacementString string: String)  ->Bool{
 
                  let maxLength = 3
-                 let currentString: NSString = (PeriodTextField.text ?? "") as NSString
+                 let period: NSString = (PeriodTextField.text ?? "") as NSString
                  let newString: NSString =
-                currentString.replacingCharacters(in: range, with: string) as NSString
+                    period.replacingCharacters(in: range, with: string) as NSString
                       return newString.length <= maxLength
 
                }
@@ -130,12 +131,33 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
            
            // ボタンタップで次画面へ遷移
         @objc func didTapButton() {
-        
+            
+
+                 let realm = try! Realm()
+            
+                 if let unwrap_period = period {
+                    
+                    var periodString : NSString = NSString.init(string: unwrap_period)
+                    var periodInt : Int = periodString.integerValue
+                    
+                    try! realm.write {
+                       realm.add(Interview(value: ["period": periodInt]))
+                       print("データ書き込み")
+                    }
+                 }
+                 else {
+                   print("値が代入されていません")
+                 }
+            
                   let storyboard: UIStoryboard = self.storyboard!
                   let nextView = storyboard.instantiateViewController(withIdentifier: "OtherChoice")
                   self.hidesBottomBarWhenPushed = true
                   navigationController?.pushViewController(nextView, animated: true)
                   self.hidesBottomBarWhenPushed = false
+            
+                  let results = realm.objects(Interview.self)
+                  print("データ取得")
+                  print(results)
         
                 }
         
