@@ -14,6 +14,8 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
 
     var period: NSString!
     private var PeriodButton: UIButton!
+    
+    var periodText : String?
 
     
     override func viewDidLoad() {
@@ -65,6 +67,7 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
         
                      PeriodTextField.addTarget(self, action: #selector(textField), for: UIControl.Event.editingChanged)
                      PeriodTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControl.Event.editingChanged)
+                     PeriodTextField.addTarget(self, action: #selector(textFieldGet), for: UIControl.Event.editingChanged)
         
                
                      PeriodButton = UIButton()
@@ -110,7 +113,14 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
                     period.replacingCharacters(in: range, with: string) as NSString
                       return newString.length <= maxLength
 
-               }
+        }
+    
+         @objc func textFieldGet(PeriodTextField: UITextField) {
+            //testlabelをrealmに
+                 periodText = PeriodTextField.text!
+                 print(periodText)
+         }
+    
     
     
         @objc func textFieldDidChange(_ PeriodTextField: UITextField,shouldChangeCharactersIn range: NSRange, replacementString string: String) {
@@ -135,7 +145,7 @@ class PeriodInputController: UIViewController, UITextFieldDelegate{
 
                  let realm = try! Realm()
             
-                 if let unwrap_period = period {
+                 if let unwrap_period = periodText {
                     
                     var periodString : NSString = NSString.init(string: unwrap_period)
                     var periodInt : Int = periodString.integerValue
